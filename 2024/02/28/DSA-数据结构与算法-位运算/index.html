@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="Chinese">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/project/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/project/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/project/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/project/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/project/css/main.css">
+
+
+<link rel="stylesheet" href="/project/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"username.github.io","root":"/project/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="位运算 参考了菜鸟教程 进一步用法可参考leetcode 上别的课摸鱼写的。也没什么内容。hexo的next主题markdown渲染有些问题，暂时不想管了。 基本语法    符号 操作 描述     &amp; 与 如果两个位都是1，则结果为1，否则为0   &#96; &#96; 或   ^ 异或 如果两个位不同，则结果为1，否则为0   ~ 非 0变1，1变0   &lt;&lt; 左移 将位向左移动指定的位">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法-位运算">
+<meta property="og:url" content="https://username.github.io/project/2024/02/28/DSA-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E4%BD%8D%E8%BF%90%E7%AE%97/index.html">
+<meta property="og:site_name" content="Yours22的博客">
+<meta property="og:description" content="位运算 参考了菜鸟教程 进一步用法可参考leetcode 上别的课摸鱼写的。也没什么内容。hexo的next主题markdown渲染有些问题，暂时不想管了。 基本语法    符号 操作 描述     &amp; 与 如果两个位都是1，则结果为1，否则为0   &#96; &#96; 或   ^ 异或 如果两个位不同，则结果为1，否则为0   ~ 非 0变1，1变0   &lt;&lt; 左移 将位向左移动指定的位">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-02-28T02:19:54.000Z">
+<meta property="article:modified_time" content="2024-03-03T09:23:20.812Z">
+<meta property="article:author" content="Yours22">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://username.github.io/project/2024/02/28/DSA-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E4%BD%8D%E8%BF%90%E7%AE%97/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'Chinese'
+  };
+</script>
+
+  <title>数据结构与算法-位运算 | Yours22的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/project/atom.xml" title="Yours22的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/project/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Yours22的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-首页">
+
+    <a href="/project/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-分类">
+
+    <a href="/project/%E5%88%86%E7%B1%BB/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/project/%E6%A0%87%E7%AD%BE/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-归档列表">
+
+    <a href="/project/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档列表</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="Chinese">
+    <link itemprop="mainEntityOfPage" href="https://username.github.io/project/2024/02/28/DSA-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E4%BD%8D%E8%BF%90%E7%AE%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/project/images/avatar.gif">
+      <meta itemprop="name" content="Yours22">
+      <meta itemprop="description" content="Yours22的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yours22的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据结构与算法-位运算
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-02-28 10:19:54" itemprop="dateCreated datePublished" datetime="2024-02-28T10:19:54+08:00">2024-02-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-03-03 17:23:20" itemprop="dateModified" datetime="2024-03-03T17:23:20+08:00">2024-03-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/project/categories/DSA/" itemprop="url" rel="index"><span itemprop="name">DSA</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/project/categories/DSA/%E8%A1%A5%E5%85%85/" itemprop="url" rel="index"><span itemprop="name">补充</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1>位运算</h1>
+<p>参考了<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/bit-operation.html">菜鸟教程</a><br>
+进一步用法可参考<a target="_blank" rel="noopener" href="https://leetcode.cn/circle/discuss/mDhWhf/">leetcode</a><br>
+上别的课摸鱼写的。也没什么内容。hexo的next主题markdown渲染有些问题，暂时不想管了。</p>
+<h2 id="基本语法">基本语法</h2>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>操作</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&amp;</td>
+<td>与</td>
+<td>如果两个位都是1，则结果为1，否则为0</td>
+</tr>
+<tr>
+<td>`<code></td>
+<td></code>`</td>
+<td>或</td>
+</tr>
+<tr>
+<td>^</td>
+<td>异或</td>
+<td>如果两个位不同，则结果为1，否则为0</td>
+</tr>
+<tr>
+<td>~</td>
+<td>非</td>
+<td>0变1，1变0</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>左移</td>
+<td>将位向左移动指定的位数</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>右移</td>
+<td>将位向右移动指定的位数</td>
+</tr>
+</tbody>
+</table>
+<h2 id="常见用法">常见用法</h2>
+<h3 id="按位与">按位与 &amp;</h3>
+<ol>
+<li class="lvl-3">
+<p>清零</p>
+</li>
+<li class="lvl-3">
+<p>取二进制数的指定位</p>
+</li>
+<li class="lvl-3">
+<p>判断奇偶</p>
+</li>
+</ol>
+<h3 id="按位或">按位或 |</h3>
+<ol>
+<li class="lvl-3">
+<p>把某些位设置为1</p>
+</li>
+</ol>
+<h3 id="异或-（不进位加法）">异或 ^ （不进位加法）</h3>
+<ol>
+<li class="lvl-3">
+<p>翻转指定位</p>
+</li>
+<li class="lvl-3">
+<p>交换两个数</p>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Swap</span><span class="params">(<span class="type">int</span> &amp;a, <span class="type">int</span> &amp;b)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a != b)&#123;</span><br><span class="line">        a ^= b;</span><br><span class="line">        b ^= a;</span><br><span class="line">        a ^= b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">a ^= b;：这一步将a和b进行异或操作，并将结果存储在a中。此时，a的值实际上是原始的a和b的异或结果。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">b ^= a;：这一步将新的a（即a和b的异或结果）和b进行异或操作，并将结果存储在b中。由于异或操作的性质（一个数与同一个数异或两次结果还是原数），这一步实际上将b的值变为了原始的a的值。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">a ^= b;：这一步将新的b（即原始的a的值）和新的a（即a和b的异或结果）进行异或操作，并将结果存储在a中。同样由于异或操作的性质，这一步将a的值变为了原始的b的值。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="取反">取反 ~</h3>
+<ol>
+<li class="lvl-3">
+<p>使一个数的最低位为0</p>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a &amp; ~ <span class="number">1</span></span><br><span class="line"> ~ <span class="number">1</span>=<span class="number">1111</span> <span class="number">1111</span> <span class="number">1111</span> <span class="number">1110</span> </span><br></pre></td></tr></table></figure>
+<p>如上</p>
+<h3 id="左移-与-右移-s">左移 &lt;&lt; 与 右移 &gt;&gt;s</h3>
+<p>每左（右）移一位，相当于乘（除）2</p>
+<h2 id="常见运算技巧">常见运算技巧</h2>
+<p>进一步用法可参考<a target="_blank" rel="noopener" href="https://leetcode.cn/circle/discuss/mDhWhf/">leetcode</a></p>
+<h3 id="取相反数">取相反数</h3>
+<p>-a = ~ a + 1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  1024 = 0b00000000000000000000010000000000</span><br><span class="line"> -1024 = 0b11111111111111111111110000000000</span><br><span class="line"> ~1024 = 0b11111111111111111111101111111111</span><br><span class="line">~-1024 = 0b00000000000000000000001111111111</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/project/2024/02/26/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-lecture-1/" rel="prev" title="操作系统-lecture-1.md">
+      <i class="fa fa-chevron-left"></i> 操作系统-lecture-1.md
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/project/2024/03/03/DSA-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95C1-%E7%BA%BF%E6%80%A7%E8%A1%A8/" rel="next" title="数据结构与算法C1-线性表.md">
+      数据结构与算法C1-线性表.md <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">位运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">基本语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">常见用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E4%BD%8D%E4%B8%8E"><span class="nav-number">1.2.1.</span> <span class="nav-text">按位与 &amp;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E4%BD%8D%E6%88%96"><span class="nav-number">1.2.2.</span> <span class="nav-text">按位或 |</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E6%88%96-%EF%BC%88%E4%B8%8D%E8%BF%9B%E4%BD%8D%E5%8A%A0%E6%B3%95%EF%BC%89"><span class="nav-number">1.2.3.</span> <span class="nav-text">异或 ^ （不进位加法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E5%8F%8D"><span class="nav-number">1.2.4.</span> <span class="nav-text">取反 ~</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A6%E7%A7%BB-%E4%B8%8E-%E5%8F%B3%E7%A7%BB-s"><span class="nav-number">1.2.5.</span> <span class="nav-text">左移 &lt;&lt; 与 右移 &gt;&gt;s</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E8%BF%90%E7%AE%97%E6%8A%80%E5%B7%A7"><span class="nav-number">1.3.</span> <span class="nav-text">常见运算技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E7%9B%B8%E5%8F%8D%E6%95%B0"><span class="nav-number">1.3.1.</span> <span class="nav-text">取相反数</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yours22</p>
+  <div class="site-description" itemprop="description">Yours22的个人博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/project/archives">
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/project/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/project/%E6%A0%87%E7%AD%BE/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/project/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yours22</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/project/lib/anime.min.js"></script>
+  <script src="/project/lib/velocity/velocity.min.js"></script>
+  <script src="/project/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/project/js/utils.js"></script>
+
+<script src="/project/js/motion.js"></script>
+
+
+<script src="/project/js/schemes/muse.js"></script>
+
+
+<script src="/project/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+
+</html>
