@@ -3,11 +3,11 @@
   <title>Yours22的博客</title>
   
   
-  <link href="https://username.github.io/project/atom.xml" rel="self"/>
+  <link href="https://yours22.github.io/project/atom.xml" rel="self"/>
   
-  <link href="https://username.github.io/project/"/>
-  <updated>2024-03-11T03:23:08.304Z</updated>
-  <id>https://username.github.io/project/</id>
+  <link href="https://yours22.github.io/project/"/>
+  <updated>2024-03-14T16:01:08.623Z</updated>
+  <id>https://yours22.github.io/project/</id>
   
   <author>
     <name>Yours22</name>
@@ -17,9 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Jetson Orin</title>
+    <link href="https://yours22.github.io/project/2024/03/14/Jetson-Orin/"/>
+    <id>https://yours22.github.io/project/2024/03/14/Jetson-Orin/</id>
+    <published>2024-03-14T13:47:27.000Z</published>
+    <updated>2024-03-14T16:01:08.623Z</updated>
+    
+    <content type="html"><![CDATA[<h1>Jetson Orin 环境配置</h1><p>Jetson AGX Orin<br>Ubuntu 22.04</p><h2 id="安装-torch-和-torchvision-和-cuda-等">安装 torch 和 torchvision 和 cuda 等</h2><p>注意版本和安装系统即可。<br>之后再补全。</p><h3 id="测试">测试</h3><p>测试torch能否正确调用cuda</p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="comment"># 以下代码只有在PyTorch GPU版本上才会执行</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br><span class="line">a = torch.randn(<span class="number">10000</span>,<span class="number">1000</span>)</span><br><span class="line">b = torch.randn(<span class="number">1000</span>,<span class="number">2000</span>)</span><br><span class="line">t0 = time.time()</span><br><span class="line">c = torch.matmul(a,b)</span><br><span class="line">t1 = time.time()</span><br><span class="line"><span class="built_in">print</span>(a.device,t1-t0,c.norm(<span class="number">2</span>))</span><br><span class="line"> </span><br><span class="line">device = torch.device(<span class="string">&#x27;cuda&#x27;</span>)</span><br><span class="line">a = a.to(device)</span><br><span class="line">b = b.to(device)</span><br><span class="line">t0 = time.time()</span><br><span class="line">c = torch.matmul(a,b)</span><br><span class="line">t1 = time.time()</span><br><span class="line"><span class="built_in">print</span>(a.device,t1-t0,c.norm(<span class="number">2</span>))</span><br><span class="line"> </span><br><span class="line">t0 = time.time()</span><br><span class="line">c = torch.matmul(a,b)</span><br><span class="line">t1 = time.time()</span><br><span class="line"><span class="built_in">print</span>(a.device,t1-t0,c.norm(<span class="number">2</span>))</span><br></pre></td></tr></table></figure><p>本文参考 <a href="https://zhuanlan.zhihu.com/p/640233255">知乎</a></p><h2 id="安装yolov5">安装yolov5</h2><h3 id="什么是yolov5">什么是yolov5</h3><p>待补充</p><h3 id="具体过程">具体过程</h3><h4 id="安装">安装</h4><pre><code class="language-bash">#Step 1. Access the terminal of Jetson device, install pip and upgrade itsudo apt updatesudo apt install -y python3-pippip3 install --upgrade pipgit clone https://github.com/ultralytics/yolov5cd yolov5#然后把torch和torchvision注释掉，这两个需要单独安装vim requirements.txt# torch&gt;=1.7.0# torchvision&gt;=0.8.1sudo apt install -y libfreetype6-devpip3 install -r requirements.txt</code></pre><h2 id="yolov5测试">yolov5测试</h2><p>参考<a href="https://blog.csdn.net/Monajim/article/details/121179797">CSDN</a></p><p>环境配置好后，下载Yolov5预训练模型<br><a href="https://github.com/ultralytics/yolov5/releases">GitHub</a><br>下载模型：Yolo预训练模型：<a href="http://Yolov5s.pt">Yolov5s.pt</a>、<a href="http://Yolov5m.pt">Yolov5m.pt</a>、<a href="http://Yolov5l.pt">Yolov5l.pt</a>、<a href="http://Yolov5x.pt">Yolov5x.pt</a>  并放至Yolov5的根目录</p><h3 id="图片测试">图片测试</h3><h3 id="视频测试">视频测试</h3><p>测试成功,但是发现帧率较低，只有20-30帧左右。</p><p>疑似是缓存速度限制了计算速度。经检查GPU和CPU占用率都比较低。</p><h3 id="接入摄像头">接入摄像头</h3>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1&gt;Jetson Orin 环境配置&lt;/h1&gt;
+&lt;p&gt;Jetson AGX Orin&lt;br&gt;
+Ubuntu 22.04&lt;/p&gt;
+&lt;h2 id=&quot;安装-torch-和-torchvision-和-cuda-等&quot;&gt;安装 torch 和 torchvision 和 cuda 等&lt;/</summary>
+      
+    
+    
+    
+    <category term="Jetson" scheme="https://yours22.github.io/project/categories/Jetson/"/>
+    
+    <category term="环境配置" scheme="https://yours22.github.io/project/categories/Jetson/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>rcore-part0-环境配置</title>
-    <link href="https://username.github.io/project/2024/03/11/OS-rcore-part1/"/>
-    <id>https://username.github.io/project/2024/03/11/OS-rcore-part1/</id>
+    <link href="https://yours22.github.io/project/2024/03/11/OS-rcore-part1/"/>
+    <id>https://yours22.github.io/project/2024/03/11/OS-rcore-part1/</id>
     <published>2024-03-11T02:50:04.000Z</published>
     <updated>2024-03-11T03:23:08.304Z</updated>
     
@@ -35,17 +62,17 @@
     
     
     
-    <category term="操作系统" scheme="https://username.github.io/project/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    <category term="操作系统" scheme="https://yours22.github.io/project/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
-    <category term="rCore" scheme="https://username.github.io/project/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/rCore/"/>
+    <category term="rCore" scheme="https://yours22.github.io/project/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/rCore/"/>
     
     
   </entry>
   
   <entry>
     <title>计网基础-1.md</title>
-    <link href="https://username.github.io/project/2024/03/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%AE%A1%E7%BD%91%E5%9F%BA%E7%A1%80-1/"/>
-    <id>https://username.github.io/project/2024/03/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%AE%A1%E7%BD%91%E5%9F%BA%E7%A1%80-1/</id>
+    <link href="https://yours22.github.io/project/2024/03/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%AE%A1%E7%BD%91%E5%9F%BA%E7%A1%80-1/"/>
+    <id>https://yours22.github.io/project/2024/03/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%AE%A1%E7%BD%91%E5%9F%BA%E7%A1%80-1/</id>
     <published>2024-03-03T09:00:03.000Z</published>
     <updated>2024-03-03T09:08:43.553Z</updated>
     
@@ -57,8 +84,8 @@
   
   <entry>
     <title>postSQL基础-1.md</title>
-    <link href="https://username.github.io/project/2024/03/03/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL%E5%9F%BA%E7%A1%80-1/"/>
-    <id>https://username.github.io/project/2024/03/03/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL%E5%9F%BA%E7%A1%80-1/</id>
+    <link href="https://yours22.github.io/project/2024/03/03/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL%E5%9F%BA%E7%A1%80-1/"/>
+    <id>https://yours22.github.io/project/2024/03/03/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL%E5%9F%BA%E7%A1%80-1/</id>
     <published>2024-03-03T08:56:58.000Z</published>
     <updated>2024-03-04T03:10:26.238Z</updated>
     
@@ -74,17 +101,17 @@
     
     
     
-    <category term="PostgreSQL" scheme="https://username.github.io/project/categories/PostgreSQL/"/>
+    <category term="PostgreSQL" scheme="https://yours22.github.io/project/categories/PostgreSQL/"/>
     
-    <category term="BASIC" scheme="https://username.github.io/project/categories/PostgreSQL/BASIC/"/>
+    <category term="BASIC" scheme="https://yours22.github.io/project/categories/PostgreSQL/BASIC/"/>
     
     
   </entry>
   
   <entry>
     <title>Java基础.md</title>
-    <link href="https://username.github.io/project/2024/03/03/Java-Java%E5%9F%BA%E7%A1%80/"/>
-    <id>https://username.github.io/project/2024/03/03/Java-Java%E5%9F%BA%E7%A1%80/</id>
+    <link href="https://yours22.github.io/project/2024/03/03/Java-Java%E5%9F%BA%E7%A1%80/"/>
+    <id>https://yours22.github.io/project/2024/03/03/Java-Java%E5%9F%BA%E7%A1%80/</id>
     <published>2024-03-03T08:54:08.000Z</published>
     <updated>2024-03-03T09:08:43.543Z</updated>
     
@@ -96,8 +123,8 @@
   
   <entry>
     <title>操作系统-lecture-2.md</title>
-    <link href="https://username.github.io/project/2024/03/03/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-lecture-2/"/>
-    <id>https://username.github.io/project/2024/03/03/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-lecture-2/</id>
+    <link href="https://yours22.github.io/project/2024/03/03/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-lecture-2/"/>
+    <id>https://yours22.github.io/project/2024/03/03/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-lecture-2/</id>
     <published>2024-03-03T08:50:57.000Z</published>
     <updated>2024-03-11T15:17:13.859Z</updated>
     
@@ -120,17 +147,17 @@
     
     
     
-    <category term="操作系统" scheme="https://username.github.io/project/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    <category term="操作系统" scheme="https://yours22.github.io/project/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
-    <category term="基础" scheme="https://username.github.io/project/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E5%9F%BA%E7%A1%80/"/>
+    <category term="基础" scheme="https://yours22.github.io/project/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E5%9F%BA%E7%A1%80/"/>
     
     
   </entry>
   
   <entry>
     <title>数据结构与算法C1-线性表.md</title>
-    <link href="https://username.github.io/project/2024/03/03/DSA-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95C1-%E7%BA%BF%E6%80%A7%E8%A1%A8/"/>
-    <id>https://username.github.io/project/2024/03/03/DSA-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95C1-%E7%BA%BF%E6%80%A7%E8%A1%A8/</id>
+    <link href="https://yours22.github.io/project/2024/03/03/DSA-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95C1-%E7%BA%BF%E6%80%A7%E8%A1%A8/"/>
+    <id>https://yours22.github.io/project/2024/03/03/DSA-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95C1-%E7%BA%BF%E6%80%A7%E8%A1%A8/</id>
     <published>2024-03-03T07:59:48.000Z</published>
     <updated>2024-03-12T02:15:08.201Z</updated>
     
@@ -147,17 +174,17 @@
     
     
     
-    <category term="DSA" scheme="https://username.github.io/project/categories/DSA/"/>
+    <category term="DSA" scheme="https://yours22.github.io/project/categories/DSA/"/>
     
-    <category term="Basic" scheme="https://username.github.io/project/categories/DSA/Basic/"/>
+    <category term="Basic" scheme="https://yours22.github.io/project/categories/DSA/Basic/"/>
     
     
   </entry>
   
   <entry>
     <title>数据结构与算法-位运算</title>
-    <link href="https://username.github.io/project/2024/02/28/DSA-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
-    <id>https://username.github.io/project/2024/02/28/DSA-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E4%BD%8D%E8%BF%90%E7%AE%97/</id>
+    <link href="https://yours22.github.io/project/2024/02/28/DSA-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    <id>https://yours22.github.io/project/2024/02/28/DSA-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E4%BD%8D%E8%BF%90%E7%AE%97/</id>
     <published>2024-02-28T02:19:54.000Z</published>
     <updated>2024-03-03T09:23:20.812Z</updated>
     
@@ -173,17 +200,17 @@
     
     
     
-    <category term="DSA" scheme="https://username.github.io/project/categories/DSA/"/>
+    <category term="DSA" scheme="https://yours22.github.io/project/categories/DSA/"/>
     
-    <category term="补充" scheme="https://username.github.io/project/categories/DSA/%E8%A1%A5%E5%85%85/"/>
+    <category term="补充" scheme="https://yours22.github.io/project/categories/DSA/%E8%A1%A5%E5%85%85/"/>
     
     
   </entry>
   
   <entry>
     <title>操作系统-lecture-1.md</title>
-    <link href="https://username.github.io/project/2024/02/26/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-lecture-1/"/>
-    <id>https://username.github.io/project/2024/02/26/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-lecture-1/</id>
+    <link href="https://yours22.github.io/project/2024/02/26/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-lecture-1/"/>
+    <id>https://yours22.github.io/project/2024/02/26/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-lecture-1/</id>
     <published>2024-02-26T11:10:07.000Z</published>
     <updated>2024-03-04T13:40:46.375Z</updated>
     
@@ -199,17 +226,17 @@
     
     
     
-    <category term="操作系统" scheme="https://username.github.io/project/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    <category term="操作系统" scheme="https://yours22.github.io/project/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
-    <category term="基础" scheme="https://username.github.io/project/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E5%9F%BA%E7%A1%80/"/>
+    <category term="基础" scheme="https://yours22.github.io/project/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E5%9F%BA%E7%A1%80/"/>
     
     
   </entry>
   
   <entry>
     <title>HelloWorld</title>
-    <link href="https://username.github.io/project/2024/02/26/%E9%9A%8F%E8%AE%B0-HelloWorld/"/>
-    <id>https://username.github.io/project/2024/02/26/%E9%9A%8F%E8%AE%B0-HelloWorld/</id>
+    <link href="https://yours22.github.io/project/2024/02/26/%E9%9A%8F%E8%AE%B0-HelloWorld/"/>
+    <id>https://yours22.github.io/project/2024/02/26/%E9%9A%8F%E8%AE%B0-HelloWorld/</id>
     <published>2024-02-26T02:07:39.000Z</published>
     <updated>2024-03-04T03:34:41.910Z</updated>
     
@@ -225,10 +252,10 @@
     
     
     
-    <category term="随记" scheme="https://username.github.io/project/categories/%E9%9A%8F%E8%AE%B0/"/>
+    <category term="随记" scheme="https://yours22.github.io/project/categories/%E9%9A%8F%E8%AE%B0/"/>
     
     
-    <category term="随记" scheme="https://username.github.io/project/tags/%E9%9A%8F%E8%AE%B0/"/>
+    <category term="随记" scheme="https://yours22.github.io/project/tags/%E9%9A%8F%E8%AE%B0/"/>
     
   </entry>
   
