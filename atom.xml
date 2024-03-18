@@ -6,7 +6,7 @@
   <link href="https://yours22.github.io/project/atom.xml" rel="self"/>
   
   <link href="https://yours22.github.io/project/"/>
-  <updated>2024-03-14T16:01:08.623Z</updated>
+  <updated>2024-03-18T03:21:31.968Z</updated>
   <id>https://yours22.github.io/project/</id>
   
   <author>
@@ -17,13 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>数据结构与算法-双指针</title>
+    <link href="https://yours22.github.io/project/2024/03/18/DSA-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/"/>
+    <id>https://yours22.github.io/project/2024/03/18/DSA-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E5%8F%8C%E6%8C%87%E9%92%88/</id>
+    <published>2024-03-18T03:09:29.000Z</published>
+    <updated>2024-03-18T03:21:31.968Z</updated>
+    
+    <content type="html"><![CDATA[<p>写几道Hot100里面的双指针。</p><h2 id="283-交换0-不影响原顺序">283  交换0 不影响原顺序</h2><p>这个比较简单。双指针设置为最左边的两个，向右移动，当慢指针碰到0时停止移动，快指针继续，碰到第一个非0时交换这两个数即可。<br>这样时间复杂度为O(n)。</p><h2 id="11-盛最多水的容器">11 盛最多水的容器</h2><p>在写leetcode第十一题时，对于算法为什么是正确的不是很清楚。</p><p>如果直接遍历的话会时间超限。<br>采用双指针。一个在左一个在右。记录面积，然后向中间移动较短的指针即可，直至两指针相遇。</p><p>这个题解讲清楚了双指针是如何缩减搜索空间的。  <a href="https://leetcode.cn/problems/container-with-most-water/solutions/94102/on-shuang-zhi-zhen-jie-fa-li-jie-zheng-que-xing-tu/?envType=study-plan-v2&amp;envId=top-100-liked">Leetcode</a></p><h2 id=""></h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;写几道Hot100里面的双指针。&lt;/p&gt;
+&lt;h2 id=&quot;283-交换0-不影响原顺序&quot;&gt;283  交换0 不影响原顺序&lt;/h2&gt;
+&lt;p&gt;这个比较简单。双指针设置为最左边的两个，向右移动，当慢指针碰到0时停止移动，快指针继续，碰到第一个非0时交换这两个数即可。&lt;br&gt;
+这样</summary>
+      
+    
+    
+    
+    <category term="DSA" scheme="https://yours22.github.io/project/categories/DSA/"/>
+    
+    <category term="leetcode" scheme="https://yours22.github.io/project/categories/DSA/leetcode/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Jetson Orin</title>
     <link href="https://yours22.github.io/project/2024/03/14/Jetson-Orin/"/>
     <id>https://yours22.github.io/project/2024/03/14/Jetson-Orin/</id>
     <published>2024-03-14T13:47:27.000Z</published>
-    <updated>2024-03-14T16:01:08.623Z</updated>
+    <updated>2024-03-18T09:02:57.978Z</updated>
     
-    <content type="html"><![CDATA[<h1>Jetson Orin 环境配置</h1><p>Jetson AGX Orin<br>Ubuntu 22.04</p><h2 id="安装-torch-和-torchvision-和-cuda-等">安装 torch 和 torchvision 和 cuda 等</h2><p>注意版本和安装系统即可。<br>之后再补全。</p><h3 id="测试">测试</h3><p>测试torch能否正确调用cuda</p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="comment"># 以下代码只有在PyTorch GPU版本上才会执行</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br><span class="line">a = torch.randn(<span class="number">10000</span>,<span class="number">1000</span>)</span><br><span class="line">b = torch.randn(<span class="number">1000</span>,<span class="number">2000</span>)</span><br><span class="line">t0 = time.time()</span><br><span class="line">c = torch.matmul(a,b)</span><br><span class="line">t1 = time.time()</span><br><span class="line"><span class="built_in">print</span>(a.device,t1-t0,c.norm(<span class="number">2</span>))</span><br><span class="line"> </span><br><span class="line">device = torch.device(<span class="string">&#x27;cuda&#x27;</span>)</span><br><span class="line">a = a.to(device)</span><br><span class="line">b = b.to(device)</span><br><span class="line">t0 = time.time()</span><br><span class="line">c = torch.matmul(a,b)</span><br><span class="line">t1 = time.time()</span><br><span class="line"><span class="built_in">print</span>(a.device,t1-t0,c.norm(<span class="number">2</span>))</span><br><span class="line"> </span><br><span class="line">t0 = time.time()</span><br><span class="line">c = torch.matmul(a,b)</span><br><span class="line">t1 = time.time()</span><br><span class="line"><span class="built_in">print</span>(a.device,t1-t0,c.norm(<span class="number">2</span>))</span><br></pre></td></tr></table></figure><p>本文参考 <a href="https://zhuanlan.zhihu.com/p/640233255">知乎</a></p><h2 id="安装yolov5">安装yolov5</h2><h3 id="什么是yolov5">什么是yolov5</h3><p>待补充</p><h3 id="具体过程">具体过程</h3><h4 id="安装">安装</h4><pre><code class="language-bash">#Step 1. Access the terminal of Jetson device, install pip and upgrade itsudo apt updatesudo apt install -y python3-pippip3 install --upgrade pipgit clone https://github.com/ultralytics/yolov5cd yolov5#然后把torch和torchvision注释掉，这两个需要单独安装vim requirements.txt# torch&gt;=1.7.0# torchvision&gt;=0.8.1sudo apt install -y libfreetype6-devpip3 install -r requirements.txt</code></pre><h2 id="yolov5测试">yolov5测试</h2><p>参考<a href="https://blog.csdn.net/Monajim/article/details/121179797">CSDN</a></p><p>环境配置好后，下载Yolov5预训练模型<br><a href="https://github.com/ultralytics/yolov5/releases">GitHub</a><br>下载模型：Yolo预训练模型：<a href="http://Yolov5s.pt">Yolov5s.pt</a>、<a href="http://Yolov5m.pt">Yolov5m.pt</a>、<a href="http://Yolov5l.pt">Yolov5l.pt</a>、<a href="http://Yolov5x.pt">Yolov5x.pt</a>  并放至Yolov5的根目录</p><h3 id="图片测试">图片测试</h3><h3 id="视频测试">视频测试</h3><p>测试成功,但是发现帧率较低，只有20-30帧左右。</p><p>疑似是缓存速度限制了计算速度。经检查GPU和CPU占用率都比较低。</p><h3 id="接入摄像头">接入摄像头</h3>]]></content>
+    <content type="html"><![CDATA[<h1>Jetson Orin 环境配置</h1><p>Jetson AGX Orin<br>Ubuntu 22.04</p><h2 id="安装-torch-和-torchvision-和-cuda-等">安装 torch 和 torchvision 和 cuda 等</h2><p>注意版本和安装系统即可。<br>之后再补全。</p><h3 id="测试">测试</h3><p>测试torch能否正确调用cuda</p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="comment"># 以下代码只有在PyTorch GPU版本上才会执行</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br><span class="line">a = torch.randn(<span class="number">10000</span>,<span class="number">1000</span>)</span><br><span class="line">b = torch.randn(<span class="number">1000</span>,<span class="number">2000</span>)</span><br><span class="line">t0 = time.time()</span><br><span class="line">c = torch.matmul(a,b)</span><br><span class="line">t1 = time.time()</span><br><span class="line"><span class="built_in">print</span>(a.device,t1-t0,c.norm(<span class="number">2</span>))</span><br><span class="line"> </span><br><span class="line">device = torch.device(<span class="string">&#x27;cuda&#x27;</span>)</span><br><span class="line">a = a.to(device)</span><br><span class="line">b = b.to(device)</span><br><span class="line">t0 = time.time()</span><br><span class="line">c = torch.matmul(a,b)</span><br><span class="line">t1 = time.time()</span><br><span class="line"><span class="built_in">print</span>(a.device,t1-t0,c.norm(<span class="number">2</span>))</span><br><span class="line"> </span><br><span class="line">t0 = time.time()</span><br><span class="line">c = torch.matmul(a,b)</span><br><span class="line">t1 = time.time()</span><br><span class="line"><span class="built_in">print</span>(a.device,t1-t0,c.norm(<span class="number">2</span>))</span><br></pre></td></tr></table></figure><p>本文参考 <a href="https://zhuanlan.zhihu.com/p/640233255">知乎</a></p><h2 id="安装yolov5">安装yolov5</h2><h3 id="什么是yolov5">什么是yolov5</h3><p>待补充</p><h3 id="具体过程">具体过程</h3><h4 id="安装">安装</h4><pre><code class="language-bash">#Step 1. Access the terminal of Jetson device, install pip and upgrade itsudo apt updatesudo apt install -y python3-pippip3 install --upgrade pipgit clone https://github.com/ultralytics/yolov5cd yolov5#然后把torch和torchvision注释掉，这两个需要单独安装vim requirements.txt# torch&gt;=1.7.0# torchvision&gt;=0.8.1sudo apt install -y libfreetype6-devpip3 install -r requirements.txt</code></pre><h2 id="yolov5测试">yolov5测试</h2><p>参考<a href="https://blog.csdn.net/Monajim/article/details/121179797">CSDN</a></p><p>环境配置好后，下载Yolov5预训练模型<br><a href="https://github.com/ultralytics/yolov5/releases">GitHub</a><br>下载模型：Yolo预训练模型：<a href="http://Yolov5s.pt">Yolov5s.pt</a>、<a href="http://Yolov5m.pt">Yolov5m.pt</a>、<a href="http://Yolov5l.pt">Yolov5l.pt</a>、<a href="http://Yolov5x.pt">Yolov5x.pt</a>  并放至Yolov5的根目录</p><h3 id="图片测试">图片测试</h3><h3 id="视频测试">视频测试</h3><p>测试成功,但是发现帧率较低，只有20-30帧左右。</p><p>疑似是缓存速度限制了计算速度。经检查GPU和CPU占用率都比较低。</p><h2 id="tensorRT-测试？">tensorRT 测试？</h2><h2 id="mediapipe">mediapipe</h2><h2 id="3D-Gaussian-Splatting">3D Gaussian Splatting</h2><p>待测试。</p>]]></content>
     
     
       
