@@ -20,17 +20,19 @@
     var CONFIG = {"hostname":"yours22.github.io","root":"/project/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="第二讲 进程 2.1.2 什么是进程   程序的代码   程序的数据   CPU寄存器的值   堆、栈   一组系统资源   栈  (Stack)   用于暂存功能，保存程序运行时的上下文信息   在函数调用时，保存被调用函数的局部变量和形参   堆 (Heap) 进程">
+  <meta name="description" content="第二讲 进程管理 2.1.2 什么是进程   程序的代码   程序的数据   CPU寄存器的值   堆、栈   一组系统资源   栈  (Stack)   用于暂存功能，保存程序运行时的上下文信息   在函数调用时，保存被调用函数的局部变量和形参   堆 (Heap)   内存中的一块空间，用于动态分配；   在C语言中，通过malloc来申请动态内存空间，通过free来释放；   使用不当可能导">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统-lecture-2.md">
 <meta property="og:url" content="https://yours22.github.io/project/2024/03/03/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-lecture-2/index.html">
 <meta property="og:site_name" content="Yours22的博客">
-<meta property="og:description" content="第二讲 进程 2.1.2 什么是进程   程序的代码   程序的数据   CPU寄存器的值   堆、栈   一组系统资源   栈  (Stack)   用于暂存功能，保存程序运行时的上下文信息   在函数调用时，保存被调用函数的局部变量和形参   堆 (Heap) 进程">
+<meta property="og:description" content="第二讲 进程管理 2.1.2 什么是进程   程序的代码   程序的数据   CPU寄存器的值   堆、栈   一组系统资源   栈  (Stack)   用于暂存功能，保存程序运行时的上下文信息   在函数调用时，保存被调用函数的局部变量和形参   堆 (Heap)   内存中的一块空间，用于动态分配；   在C语言中，通过malloc来申请动态内存空间，通过free来释放；   使用不当可能导">
 <meta property="og:locale">
+<meta property="og:image" content="https://yours22.github.io/project/2024/03/03/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-lecture-2/img/os6.png">
 <meta property="article:published_time" content="2024-03-03T08:50:57.000Z">
-<meta property="article:modified_time" content="2024-03-11T15:17:13.859Z">
+<meta property="article:modified_time" content="2024-04-01T11:35:08.465Z">
 <meta property="article:author" content="Yours22">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yours22.github.io/project/2024/03/03/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-lecture-2/img/os6.png">
 
 <link rel="canonical" href="https://yours22.github.io/project/2024/03/03/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-lecture-2/">
 
@@ -191,7 +193,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-03-11 23:17:13" itemprop="dateModified" datetime="2024-03-11T23:17:13+08:00">2024-03-11</time>
+                <time title="Modified: 2024-04-01 19:35:08" itemprop="dateModified" datetime="2024-04-01T19:35:08+08:00">2024-04-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -218,7 +220,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1>第二讲 进程</h1>
+        <h1>第二讲 进程管理</h1>
 <h2 id="2-1-2-什么是进程">2.1.2 什么是进程</h2>
 <ol>
 <li class="lvl-3">
@@ -247,7 +249,148 @@
 </li>
 </ul>
 <h3 id="堆-Heap">堆 (Heap)</h3>
-<h3 id="进程">进程</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>内存中的一块空间，用于动态分配；</p>
+</li>
+<li class="lvl-2">
+<p>在C语言中，通过malloc来申请动态内存空间，通过free来释放；</p>
+</li>
+<li class="lvl-2">
+<p>使用不当可能导致内存泄漏。</p>
+</li>
+</ul>
+<h3 id="进程的特性">进程的特性</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>动态性：程序的运行状态在变，PC、寄存器、堆和栈等；</p>
+</li>
+<li class="lvl-2">
+<p>独立性：是一个独立的实体，是计算机系统资源的使用单位。每个进程在一个“虚拟计算机”上运行，每个进程都有“自己”的PC和内部状态，运行时独立于其他的进程（虚拟PC和物理PC）；</p>
+</li>
+<li class="lvl-2">
+<p>并发性：从宏观上看各进程是同时独立运行的</p>
+</li>
+</ul>
+<h3 id="进程的创建">进程的创建</h3>
+<p>引起进程创建的三个主要事件：</p>
+<ol>
+<li class="lvl-3">
+<p>系统初始化时；</p>
+</li>
+<li class="lvl-3">
+<p>在一个正在运行的进程当中，执行了创建进程的系统调用；</p>
+</li>
+<li class="lvl-3">
+<p>用户请求创建一个新进程。</p>
+</li>
+</ol>
+<p>从技术上来说，只有一种创建进程的方法，即在一个已经存在的进程（用户进程或系统进程）当中，通过系统调用来创建一个新的进程。</p>
+<p>Unix：fork函数；<br>
+Windows：CreateProcess函数;</p>
+<h3 id="进程的状态">进程的状态</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>运行状态（Running）：进程占有CPU，并在CPU上运行。处于此状态的进程数目小于等于CPU的数目。</p>
+</li>
+<li class="lvl-2">
+<p>就绪状态（Ready）：进程已经具备运行条件，但由于CPU忙暂时不能运行，只要分得CPU即可执行；</p>
+</li>
+<li class="lvl-2">
+<p>阻塞状态（Blocked）：指进程因等待某种事件的发生而暂时不能运行的状态（如I/O操作或进程同步）,此时，即使CPU空闲，该进程也不能运行。</p>
+</li>
+</ul>
+<p>进程的创建：为该进程生成一个PCB。<br>
+进程的终止：回收它的PCB。<br>
+进程的组织管理：通过对PCB的组织管理来实现。</p>
+<h4 id="进程转换">进程转换</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>运行 --&gt; 阻塞</p>
+</li>
+</ul>
+<ol>
+<li class="lvl-3">
+<p>等待I/O的结果</p>
+</li>
+<li class="lvl-3">
+<p>等待某一进程提供输入</p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>运行 --&gt; 就绪</p>
+</li>
+</ul>
+<ol>
+<li class="lvl-3">
+<p>运行进程用完了时间片</p>
+</li>
+<li class="lvl-3">
+<p>运行进程被中断，因为一高优先级进程处于就绪状态</p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>就绪 --&gt; 运行</p>
+</li>
+</ul>
+<ol>
+<li class="lvl-3">
+<p>调度程序选择一个新的进程运行</p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>阻塞 --&gt; 就绪</p>
+</li>
+</ul>
+<ol>
+<li class="lvl-3">
+<p>当所等待的事件发生时</p>
+</li>
+</ol>
+<p>系统为每个进程都维护了一个PCB，用来描述进程的基本情况以及运行变化的过程，PCB是进程存在的唯一标志。</p>
+<p>进程的创建：为该进程生成一个PCB；<br>
+进程的终止：回收它的PCB；<br>
+进程的组织管理：通过对PCB的组织管理来实现；</p>
+<p>操作系统 PCB 进程管理块  <a target="_blank" rel="noopener" href="https://blog.csdn.net/siriusol/article/details/106503794">CSDN</a></p>
+<img src="./img/os6.png" width="500" height="350" />
+<h3 id="状态队列">状态队列</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>由操作系统来维护一组队列，用来表示系统当中所有进程的当前状态。</p>
+</li>
+<li class="lvl-2">
+<p>不同的状态分别用不同的队列来表示（运行队列、就绪队列、各种类型的阻塞队列）。</p>
+</li>
+<li class="lvl-2">
+<p>每个进程的PCB都根据它的状态加入到相应的队列当中，当一个进程的状态发生变化时，它的PCB从一个状态队列中脱离出来，加入到另外一个队列。</p>
+</li>
+</ul>
+<h2 id="线程">线程</h2>
+<p>比进程更小的独立运行的基本单位,满足以下特性：</p>
+<ol>
+<li class="lvl-3">
+<p>实体之间可以并发地执行；</p>
+</li>
+<li class="lvl-3">
+<p>实体之间共享相同的地址空间；</p>
+</li>
+</ol>
+<h3 id="什么是线程">什么是线程</h3>
+<p>进程是资源分配单位和操作系统保护单位，线程是CPU调度单位；进程拥有一个完整的资源平台，如代码、数据和堆，而线程只独享必不可少的资源如寄存器和栈线程同样具有就绪、阻塞和执行三种基本状态，同样具有状态之间的转换关系；线程能减少并发执行的时间和空间开销；线程 ＝ 轻量级进程（lightweight  process）</p>
+<h2 id="进程前通信与同步">进程前通信与同步</h2>
+<p>之前有事，跳过了一点，过后不一定补</p>
+<h3 id="进程间通信方式">进程间通信方式</h3>
+<h3 id="进程间互斥">进程间互斥</h3>
+<h3 id="基于关闭中断的互斥实现">基于关闭中断的互斥实现</h3>
+<h3 id="基于繁忙等待的互斥实现">基于繁忙等待的互斥实现</h3>
+<h4 id="加锁标志位法">加锁标志位法</h4>
+<h4 id="强制轮流法">强制轮流法</h4>
+<h4 id="Peterson方法">Peterson方法</h4>
+<h3 id="信号量">信号量</h3>
+<h3 id="进程间同步">进程间同步</h3>
 
     </div>
 
@@ -328,7 +471,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">第二讲 进程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-2-%E4%BB%80%E4%B9%88%E6%98%AF%E8%BF%9B%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">2.1.2 什么是进程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%88-Stack"><span class="nav-number">1.1.1.</span> <span class="nav-text">栈  (Stack)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86-Heap"><span class="nav-number">1.1.2.</span> <span class="nav-text">堆 (Heap)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B"><span class="nav-number">1.1.3.</span> <span class="nav-text">进程</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">第二讲 进程管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-2-%E4%BB%80%E4%B9%88%E6%98%AF%E8%BF%9B%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">2.1.2 什么是进程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%88-Stack"><span class="nav-number">1.1.1.</span> <span class="nav-text">栈  (Stack)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86-Heap"><span class="nav-number">1.1.2.</span> <span class="nav-text">堆 (Heap)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.3.</span> <span class="nav-text">进程的特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-number">1.1.4.</span> <span class="nav-text">进程的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81"><span class="nav-number">1.1.5.</span> <span class="nav-text">进程的状态</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">进程转换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E9%98%9F%E5%88%97"><span class="nav-number">1.1.6.</span> <span class="nav-text">状态队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.2.</span> <span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">什么是线程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E5%89%8D%E9%80%9A%E4%BF%A1%E4%B8%8E%E5%90%8C%E6%AD%A5"><span class="nav-number">1.3.</span> <span class="nav-text">进程前通信与同步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F"><span class="nav-number">1.3.1.</span> <span class="nav-text">进程间通信方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E4%BA%92%E6%96%A5"><span class="nav-number">1.3.2.</span> <span class="nav-text">进程间互斥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%85%B3%E9%97%AD%E4%B8%AD%E6%96%AD%E7%9A%84%E4%BA%92%E6%96%A5%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.3.3.</span> <span class="nav-text">基于关闭中断的互斥实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%B9%81%E5%BF%99%E7%AD%89%E5%BE%85%E7%9A%84%E4%BA%92%E6%96%A5%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.3.4.</span> <span class="nav-text">基于繁忙等待的互斥实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E9%94%81%E6%A0%87%E5%BF%97%E4%BD%8D%E6%B3%95"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">加锁标志位法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E8%BD%AE%E6%B5%81%E6%B3%95"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">强制轮流法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Peterson%E6%96%B9%E6%B3%95"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">Peterson方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="nav-number">1.3.5.</span> <span class="nav-text">信号量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E5%90%8C%E6%AD%A5"><span class="nav-number">1.3.6.</span> <span class="nav-text">进程间同步</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -341,7 +484,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/project/archives">
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
