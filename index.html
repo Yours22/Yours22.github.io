@@ -158,6 +158,197 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="Chinese">
+    <link itemprop="mainEntityOfPage" href="https://yours22.github.io/project/2024/04/02/JetsonAGXOrin-Jetson-AGX-Orin-3D-Gaussian-Splatting%E6%B5%8B%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/project/images/avatar.gif">
+      <meta itemprop="name" content="Yours22">
+      <meta itemprop="description" content="Yours22的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yours22的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/project/2024/04/02/JetsonAGXOrin-Jetson-AGX-Orin-3D-Gaussian-Splatting%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">Jetson AGX Orin 3D Gaussian Splatting测试</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-04-02 22:16:45 / Modified: 22:19:03" itemprop="dateCreated datePublished" datetime="2024-04-02T22:16:45+08:00">2024-04-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/project/categories/Jetson/" itemprop="url" rel="index"><span itemprop="name">Jetson</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/project/categories/Jetson/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index"><span itemprop="name">环境配置</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="安装Jtop"><a href="#安装Jtop" class="headerlink" title="安装Jtop"></a>安装Jtop</h2><p>Jtop 是Jetson系列开发板上，实时监控 CPU，GPU，内存 等硬件设备使用情况，同时方便开启风扇以及更改风扇的转数的一款库。  </p>
+<pre><code class="lang-bash">sudo apt-get update
+sudo apt install python3-pip                    # 安装pip3
+sudo -H pip3 install -U jetson-stats            # 安装jtop
+sudo systemctl restart jetson_stats.service        # 运行jtop服务
+reboot                                            # 重启系统
+
+# 可以通过如下命令进行监控
+jtop
+</code></pre>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="Chinese">
+    <link itemprop="mainEntityOfPage" href="https://yours22.github.io/project/2024/04/02/DSA-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95C6-%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/project/images/avatar.gif">
+      <meta itemprop="name" content="Yours22">
+      <meta itemprop="description" content="Yours22的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yours22的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/project/2024/04/02/DSA-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95C6-%E6%A0%91/" class="post-title-link" itemprop="url">数据结构与算法-树.ms</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-04-02 19:49:44 / Modified: 20:58:02" itemprop="dateCreated datePublished" datetime="2024-04-02T19:49:44+08:00">2024-04-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/project/categories/DSA/" itemprop="url" rel="index"><span itemprop="name">DSA</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/project/categories/DSA/Basic/" itemprop="url" rel="index"><span itemprop="name">Basic</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><p>一直听过但没学过。今天看看。</p>
+<h2 id="树的基本术语"><a href="#树的基本术语" class="headerlink" title="树的基本术语"></a>树的基本术语</h2><ol>
+<li>结点(node)</li>
+<li>度(degree)：结点的子女个数即为该结点的度；树中各个结点的度的最大</li>
+<li>值称为树的度。</li>
+<li>叶结点(Leaf)：度为0的结点即为叶结点，亦称为终端结点。</li>
+<li>分支结点(branch)：度不为0的结点即为分支结点，亦称为非终端结点。</li>
+<li>子女结点(child)：若结点的子树非空，结点子树的根即为该结点的子女。</li>
+<li>父节点(parent)：若结点有子女，该结点是父节点。</li>
+<li>兄弟结点(sibling)：同一结点的子女互称为兄弟。</li>
+<li>祖先结点(ancestor)：某结点到根结点的路径上的各个结点都是该结点的祖先。</li>
+<li>子孙结点(descendant)：某结点的所有下属结点，都是该结点的子孙。</li>
+<li>结点的层次：规定根结点在第1层，其子女结点的层次等于<br>它的层次加1。以下类推。</li>
+<li>深度：结点的深度即为结点的层次；离根最远结点的层次<br>即为树的深度</li>
+<li>高度：规定叶结点的高度为1，其父结点的高度等于它的高度加1。</li>
+<li>树的高度：等于根结点的高度，即根结点所有子女高度的最大值加1。</li>
+<li>树的高度与深度计算方向相反。有序树：树中结点的各棵子树T0, T1, …是有次序的，即为有序树。</li>
+<li>无序树：树中结点的各棵子树之间的次序是不重要的，可以互相交换位置。</li>
+<li>森林：森林是m（m≥0）棵树的集合。</li>
+</ol>
+<h2 id="树的抽象数据类型"><a href="#树的抽象数据类型" class="headerlink" title="树的抽象数据类型"></a>树的抽象数据类型</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">template &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Tree</span> &#123;</span></span><br><span class="line"> <span class="comment">//对象: 树是由n (≥0) 个结点组成的有限集合。在类界面中的position 是树中</span></span><br><span class="line">结点的地址。在顺序存储方式下是下标型, 在链表存储方式下是指针型</span><br><span class="line"><span class="comment">// T 是树结点中存放数据的类型, 要求所有结点的数据类型都是一致的。</span></span><br><span class="line">    public:</span><br><span class="line">    Tree ();</span><br><span class="line">    ~Tree ();</span><br><span class="line">    position <span class="title function_">Root</span><span class="params">()</span>; <span class="comment">//返回根结点地址，若树为空，返回0</span></span><br><span class="line">    <span class="number">23</span></span><br><span class="line">    BuildRoot (<span class="type">const</span> T&amp; value);  </span><br><span class="line">    <span class="comment">//建立树的根结点</span></span><br><span class="line">    position <span class="title function_">FirstChild</span><span class="params">(position p)</span>;</span><br><span class="line">    <span class="comment">//返回p 的第一个子女地址, 无子女返回0</span></span><br><span class="line">    position <span class="title function_">NextSibling</span><span class="params">(position p)</span>;</span><br><span class="line">    <span class="comment">//返回p 的下一兄弟地址, 若无下一兄弟返回0 </span></span><br><span class="line">    position <span class="title function_">Parent</span><span class="params">(position p)</span>;</span><br><span class="line">    <span class="comment">//返回p 的双亲结点地址, 若p 为根返回0</span></span><br><span class="line">    T <span class="title function_">getData</span><span class="params">(position p)</span>;</span><br><span class="line">    <span class="comment">//返回结点p 中存放的值</span></span><br><span class="line">    <span class="type">bool</span> <span class="title function_">InsertChild</span><span class="params">(position p, T&amp; value)</span>;</span><br><span class="line">    <span class="comment">//在结点p 下插入值为value 的新子女, 若插</span></span><br><span class="line">    <span class="comment">//入失败, 函数返回false, 否则返回true</span></span><br><span class="line">    <span class="type">bool</span> <span class="title function_">DeleteChild</span> <span class="params">(position p, <span class="type">int</span> i)</span>;</span><br><span class="line">    <span class="comment">//删除结点p的第i个子女及其全部子孙结</span></span><br><span class="line">    <span class="comment">//点, 若删除失败, 则返回false, 否则返回true</span></span><br><span class="line">    <span class="type">void</span> <span class="title function_">DeleteSubTree</span> <span class="params">(position t)</span>;</span><br><span class="line">    <span class="comment">//删除以t为根结点的子树</span></span><br><span class="line">    <span class="type">bool</span> <span class="title function_">IsEmpty</span> <span class="params">()</span>;</span><br><span class="line">    <span class="comment">//判树空否, 若空则返回true, 否则返回false</span></span><br><span class="line">    <span class="type">void</span> <span class="title function_">Traversal</span> <span class="params">(<span class="type">void</span> (*visit)(position p))</span>;</span><br><span class="line">    <span class="comment">//遍历以p为根的子树, visit是用户自编的访问函数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><p>一棵二叉树是结点的一个有限集合，该集合或者为空，或者是由一个根结点加上两棵分别称为左子树和右子树的、互不相交的二叉树组成（子树有左右之分，次序不能颠倒 ）  </p>
+<h3 id="二叉树的链表表示"><a href="#二叉树的链表表示" class="headerlink" title="二叉树的链表表示"></a>二叉树的链表表示</h3><ul>
+<li>二叉链表：<br>二叉树结点定义：每个结点有3个数据成员：<br>data域存储结点数据<br>leftChild和rightChild分别存放指向左子女和右子女的指针  </li>
+<li>三叉链表<br>每个结点增加一个指向双亲的指针parent，使得查找双亲也很方便。  </li>
+</ul>
+<h3 id="特殊的二叉树"><a href="#特殊的二叉树" class="headerlink" title="特殊的二叉树"></a>特殊的二叉树</h3><ul>
+<li>满二叉树</li>
+<li>完全二叉树</li>
+<li>正则二叉树</li>
+<li>理想平衡二叉树</li>
+</ul>
+<h2 id="二叉树遍历"><a href="#二叉树遍历" class="headerlink" title="二叉树遍历"></a>二叉树遍历</h2><p>二叉树的遍历就是按某种次序访问树中的结点，要求每个结点访问一次且仅访问一次。<br>设访问根结点记作V<br>遍历根的左子树记作L<br>遍历根的右子树记作R<br>则可能的遍历次序有<br>前序 VLR 镜像 VRL<br>中序 LVR 镜像 RVL<br>后序 LRV 镜像 RLV  </p>
+<h3 id="中序遍历（Inorder-Traversal）"><a href="#中序遍历（Inorder-Traversal）" class="headerlink" title="中序遍历（Inorder Traversal）"></a>中序遍历（Inorder Traversal）</h3><ol>
+<li>若空。 </li>
+<li>中序遍历左子树。</li>
+<li>访问跟节点。</li>
+<li>中序遍历右子树。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="Chinese">
     <link itemprop="mainEntityOfPage" href="https://yours22.github.io/project/2024/04/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-WebSocket%E5%9F%BA%E7%A1%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -274,13 +465,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1>哈希</h1>
-<p>之前没学过，记一下。</p>
+          <h1 id="哈希"><a href="#哈希" class="headerlink" title="哈希"></a>哈希</h1><p>之前没学过，记一下。  </p>
 <p>哈希表也叫散列表，哈希表是一种数据结构，它提供了快速的插入操作和查找操作，无论哈希表总中有多少条数据，插入和查找的时间复杂度都是为O(1)，因为哈希表的查找速度非常快，所以在很多程序中都有使用哈希表，例如拼音检查器。</p>
-<p>哈希表也有自己的缺点，哈希表是基于数组的，我们知道数组创建后扩容成本比较高，所以当哈希表被填满时，性能下降的比较严重。</p>
+<p>哈希表也有自己的缺点，哈希表是基于数组的，我们知道数组创建后扩容成本比较高，所以当哈希表被填满时，性能下降的比较严重。  </p>
 <p>本篇摘录自 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/144296454">知乎</a></p>
-<h2 id="哈希函数">哈希函数</h2>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> final <span class="type">int</span> <span class="title function_">hash</span><span class="params">(Object key)</span> &#123;</span><br><span class="line">    <span class="type">int</span> h;</span><br><span class="line">    <span class="keyword">return</span> (key == null) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line">这个函数的工作原理如下：</span><br><span class="line"></span><br><span class="line">如果键（key）为 null，那么哈希值就是 <span class="number">0</span>。</span><br><span class="line"></span><br><span class="line">如果键（key）不为 null，那么首先调用键（key）的 hashCode() 方法来获取一个整数，这个整数是由对象的内部地址转换得到的。</span><br><span class="line"></span><br><span class="line">然后，这个整数（h）被自己右移 <span class="number">16</span> 位（h &gt;&gt;&gt; <span class="number">16</span>）后与自己进行异或操作（h ^ (h &gt;&gt;&gt; <span class="number">16</span>)）。这个操作的目的是为了减少哈希冲突，也就是不同的键（key）映射到同一个位置的情况。</span><br><span class="line"></span><br><span class="line">这个哈希函数的结果会被用作在哈希表中查找键（key）的位置。这是一个非常重要的步骤，因为它决定了哈希表的性能：一个好的哈希函数可以均匀地将键（key）分布在哈希表中，从而最大化地减少哈希冲突，提高查找效率。  </span><br><span class="line"></span><br><span class="line">## 哈希冲突  </span><br><span class="line">常用开放地址法和链表法解决哈希冲突。  </span><br><span class="line"></span><br><span class="line">### 开放地址法  </span><br><span class="line">在开放地址法中有三种方式来寻找其他的位置，分别是 **「线性探测」、「二次探测」、「双哈希法」**  </span><br><span class="line"></span><br><span class="line">#### 暂略  </span><br><span class="line"></span><br><span class="line">### 链表法  </span><br><span class="line">每个数组元素对应一条链表。通过某项关键字通过哈希后落到哈希表中的某个位置（数组元素）  </span><br><span class="line">这样，即使发生“哈希冲突”，也只需要把这个数据添加到链表中，而不需要在原始数据中寻找空位来存储。  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">“「链表法」解决哈希冲突代码比较简单，但是代码比较多，因为需要维护一个链表的操作，我们这里采用有序链表，有序链表不能加快成功的查找，但是可以减少不成功的查找时间，因为只要有一项比查找值大，就说明没有我们需要查找的值，删除时间跟查找时间一样，有序链表能够缩短删除时间。但是有序链表增加了插入时间，我们需要在有序链表中找到正确的插入位置。”</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## <span class="number">1.</span> 两数之和  </span><br><span class="line">给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。</span><br><span class="line"></span><br><span class="line">你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。</span><br><span class="line"></span><br><span class="line">你可以按任意顺序返回答案。  </span><br><span class="line"></span><br><span class="line">```Java</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>&#123;</span></span><br><span class="line">    public <span class="type">int</span>[] twoSum(<span class="type">int</span>[] nums, <span class="type">int</span> target)&#123;</span><br><span class="line">        Map&lt;Integar,Integar&gt; <span class="built_in">map</span> =new HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">map</span>.containsKey(target-nums[i]))&#123;</span><br><span class="line">                <span class="keyword">return</span> new <span class="type">int</span>[] &#123;<span class="built_in">map</span>.get(target-nums[i])</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">map</span>.put(nums[i],i);</span><br><span class="line">            &#125;</span><br><span class="line">            throw new IllegalArgumentException(<span class="string">&quot;No two sum solution&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="哈希函数"><a href="#哈希函数" class="headerlink" title="哈希函数"></a>哈希函数</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> final <span class="type">int</span> <span class="title function_">hash</span><span class="params">(Object key)</span> &#123;</span><br><span class="line">    <span class="type">int</span> h;</span><br><span class="line">    <span class="keyword">return</span> (key == null) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line">这个函数的工作原理如下：</span><br><span class="line"></span><br><span class="line">如果键（key）为 null，那么哈希值就是 <span class="number">0</span>。</span><br><span class="line"></span><br><span class="line">如果键（key）不为 null，那么首先调用键（key）的 hashCode() 方法来获取一个整数，这个整数是由对象的内部地址转换得到的。</span><br><span class="line"></span><br><span class="line">然后，这个整数（h）被自己右移 <span class="number">16</span> 位（h &gt;&gt;&gt; <span class="number">16</span>）后与自己进行异或操作（h ^ (h &gt;&gt;&gt; <span class="number">16</span>)）。这个操作的目的是为了减少哈希冲突，也就是不同的键（key）映射到同一个位置的情况。</span><br><span class="line"></span><br><span class="line">这个哈希函数的结果会被用作在哈希表中查找键（key）的位置。这是一个非常重要的步骤，因为它决定了哈希表的性能：一个好的哈希函数可以均匀地将键（key）分布在哈希表中，从而最大化地减少哈希冲突，提高查找效率。  </span><br><span class="line"></span><br><span class="line">## 哈希冲突  </span><br><span class="line">常用开放地址法和链表法解决哈希冲突。  </span><br><span class="line"></span><br><span class="line">### 开放地址法  </span><br><span class="line">在开放地址法中有三种方式来寻找其他的位置，分别是 **「线性探测」、「二次探测」、「双哈希法」**  </span><br><span class="line"></span><br><span class="line">#### 暂略  </span><br><span class="line"></span><br><span class="line">### 链表法  </span><br><span class="line">每个数组元素对应一条链表。通过某项关键字通过哈希后落到哈希表中的某个位置（数组元素）  </span><br><span class="line">这样，即使发生“哈希冲突”，也只需要把这个数据添加到链表中，而不需要在原始数据中寻找空位来存储。  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">“「链表法」解决哈希冲突代码比较简单，但是代码比较多，因为需要维护一个链表的操作，我们这里采用有序链表，有序链表不能加快成功的查找，但是可以减少不成功的查找时间，因为只要有一项比查找值大，就说明没有我们需要查找的值，删除时间跟查找时间一样，有序链表能够缩短删除时间。但是有序链表增加了插入时间，我们需要在有序链表中找到正确的插入位置。”</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## <span class="number">1.</span> 两数之和  </span><br><span class="line">给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。</span><br><span class="line"></span><br><span class="line">你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。</span><br><span class="line"></span><br><span class="line">你可以按任意顺序返回答案。  </span><br><span class="line"></span><br><span class="line">```Java</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>&#123;</span></span><br><span class="line">    public <span class="type">int</span>[] twoSum(<span class="type">int</span>[] nums, <span class="type">int</span> target)&#123;</span><br><span class="line">        Map&lt;Integar,Integar&gt; <span class="built_in">map</span> =new HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">map</span>.containsKey(target-nums[i]))&#123;</span><br><span class="line">                <span class="keyword">return</span> new <span class="type">int</span>[] &#123;<span class="built_in">map</span>.get(target-nums[i])</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">map</span>.put(nums[i],i);</span><br><span class="line">            &#125;</span><br><span class="line">            throw new IllegalArgumentException(<span class="string">&quot;No two sum solution&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -353,16 +542,11 @@
 
       
           <p>写几道Hot100里面的双指针。</p>
-<h2 id="283-交换0-不影响原顺序">283  交换0 不影响原顺序</h2>
-<p>这个比较简单。双指针设置为最左边的两个，向右移动，当慢指针碰到0时停止移动，快指针继续，碰到第一个非0时交换这两个数即可。<br>
-这样时间复杂度为O(n)。</p>
-<h2 id="11-盛最多水的容器">11 盛最多水的容器</h2>
-<p>在写leetcode第十一题时，对于算法为什么是正确的不是很清楚。</p>
-<p>如果直接遍历的话会时间超限。<br>
-采用双指针。一个在左一个在右。记录面积，然后向中间移动较短的指针即可，直至两指针相遇。</p>
-<p>这个题解讲清楚了双指针是如何缩减搜索空间的。  <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/container-with-most-water/solutions/94102/on-shuang-zhi-zhen-jie-fa-li-jie-zheng-que-xing-tu/?envType=study-plan-v2&amp;envId=top-100-liked">Leetcode</a></p>
-<h2 id=""></h2>
-
+<h2 id="283-交换0-不影响原顺序"><a href="#283-交换0-不影响原顺序" class="headerlink" title="283  交换0 不影响原顺序"></a>283  交换0 不影响原顺序</h2><p>这个比较简单。<br>双指针设置为最左边的两个，向右移动，当慢指针碰到0时停止移动，快指针继续，碰到第一个非0时交换这两个数即可。<br>这样时间复杂度为O(n)。</p>
+<h2 id="11-盛最多水的容器"><a href="#11-盛最多水的容器" class="headerlink" title="11 盛最多水的容器"></a>11 盛最多水的容器</h2><p>在写leetcode第十一题时，对于算法为什么是正确的不是很清楚。 </p>
+<p>如果直接遍历的话会时间超限。<br>采用双指针。一个在左一个在右。记录面积，然后向中间移动较短的指针即可，直至两指针相遇。</p>
+<p>这个题解讲清楚了双指针是如何缩减搜索空间的。  <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/container-with-most-water/solutions/94102/on-shuang-zhi-zhen-jie-fa-li-jie-zheng-que-xing-tu/?envType=study-plan-v2&amp;envId=top-100-liked">Leetcode</a>  </p>
+<h2 id=""><a href="#" class="headerlink" title=" "></a> </h2>
       
     </div>
 
@@ -439,40 +623,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1>Mediapipe 安装测试</h1>
-<p>具体过程参考在Jetson Nano上的文章 <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_56548850/article/details/123981579">CSDN</a></p>
-<p>基本介绍：</p>
-<p>1.介绍<br>
-MediaPipe是一款由Google开发并开源的数据流处理机器学习应用开发框架。它是一个基于图的数据处理管线，用于构建使用了多种形式的数据源，如视频、音频、传感器数据以及任何时间序列数据。MediaPipe通过将各个感知模型抽象为模块并将其连接到可维护的图中来解决这些问题。优点：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>有效管理资源(CPU和GPU)达到低延迟性能</p>
-</li>
-<li class="lvl-2">
-<p>处理诸如音频和视频帧之类的时间序列数据的同步</p>
-</li>
-<li class="lvl-2">
-<p>并测量性能和资源消耗（目前Google正在开发，尚未开源）</p>
-</li>
+          <h1 id="Mediapipe-安装测试"><a href="#Mediapipe-安装测试" class="headerlink" title="Mediapipe 安装测试"></a>Mediapipe 安装测试</h1><p>具体过程参考在Jetson Nano上的文章 <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_56548850/article/details/123981579">CSDN</a></p>
+<p>基本介绍：  </p>
+<p>1.介绍<br>MediaPipe是一款由Google开发并开源的数据流处理机器学习应用开发框架。它是一个基于图的数据处理管线，用于构建使用了多种形式的数据源，如视频、音频、传感器数据以及任何时间序列数据。MediaPipe通过将各个感知模型抽象为模块并将其连接到可维护的图中来解决这些问题。<br>优点：</p>
+<ul>
+<li>有效管理资源(CPU和GPU)达到低延迟性能</li>
+<li>处理诸如音频和视频帧之类的时间序列数据的同步</li>
+<li>并测量性能和资源消耗（目前Google正在开发，尚未开源）</li>
 </ul>
 <p>MediaPipe的主要组件包括：</p>
-<p>(1) 图（Graph）-有向图<br>
-(2) 数据包（Packet）<br>
-(3) 节点（Node）<br>
-(4) 数据流（Stream）<br>
-(5) 图配置（GraphConfig）<br>
-(6) 计算单元（Caculator）<br>
-(7) 子图（Subgraph）</p>
-<h2 id="安装编译器-Bazel-4-0-0">安装编译器 Bazel 4.0.0</h2>
-<p>没有Ubuntu 22.04对应版本，似乎要下载源码自行编译。<br>
-参考官方文档 <a target="_blank" rel="noopener" href="https://docs.bazel.build/versions/4.0.0/install-compile-source.html">Bazel</a><br>
-好像github上没有4.0.0了。</p>
-<p>安装最新版，切换到对应目录后：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bash ./compile.sh</span><br><span class="line">sudo <span class="built_in">cp</span> output/bazel /usr/local/bin</span><br></pre></td></tr></table></figure>
-<p>运行第一条命令后报错：</p>
-<pre><code>JDK Version(1.11) is lower than 21, please set $JAVA_HOME  
-</code></pre>
-<p>装了半天没装上，寄。Java安装也太反人类了。</p>
+<p>(1) 图（Graph）-有向图<br>(2) 数据包（Packet）<br>(3) 节点（Node）<br>(4) 数据流（Stream）<br>(5) 图配置（GraphConfig）<br>(6) 计算单元（Caculator）<br>(7) 子图（Subgraph） </p>
+<h2 id="安装编译器-Bazel-4-0-0"><a href="#安装编译器-Bazel-4-0-0" class="headerlink" title="安装编译器 Bazel 4.0.0"></a>安装编译器 Bazel 4.0.0</h2><p>没有Ubuntu 22.04对应版本，似乎要下载源码自行编译。<br>参考官方文档 <a target="_blank" rel="noopener" href="https://docs.bazel.build/versions/4.0.0/install-compile-source.html">Bazel</a><br>好像github上没有4.0.0了。  </p>
+<p>安装最新版，切换到对应目录后：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bash ./compile.sh</span><br><span class="line">sudo <span class="built_in">cp</span> output/bazel /usr/local/bin</span><br></pre></td></tr></table></figure></p>
+<p>运行第一条命令后报错：  </p>
+<pre><code>JDK Version(1.11) is lower than 21, please set $JAVA_HOME
+</code></pre><p>装了半天没装上，寄。Java安装也太反人类了。</p>
 
       
     </div>
@@ -523,7 +688,7 @@ MediaPipe是一款由Google开发并开源的数据流处理机器学习应用�
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-03-18 17:02:57" itemprop="dateModified" datetime="2024-03-18T17:02:57+08:00">2024-03-18</time>
+                <time title="Modified: 2024-04-04 12:17:59" itemprop="dateModified" datetime="2024-04-04T12:17:59+08:00">2024-04-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -550,22 +715,13 @@ MediaPipe是一款由Google开发并开源的数据流处理机器学习应用�
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1>Jetson Orin 环境配置</h1>
-<p>Jetson AGX Orin<br>
-Ubuntu 22.04</p>
-<h2 id="安装-torch-和-torchvision-和-cuda-等">安装 torch 和 torchvision 和 cuda 等</h2>
-<p>注意版本和安装系统即可。<br>
-之后再补全。</p>
-<h3 id="测试">测试</h3>
-<p>测试torch能否正确调用cuda</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="comment"># 以下代码只有在PyTorch GPU版本上才会执行</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br><span class="line">a = torch.randn(<span class="number">10000</span>,<span class="number">1000</span>)</span><br><span class="line">b = torch.randn(<span class="number">1000</span>,<span class="number">2000</span>)</span><br><span class="line">t0 = time.time()</span><br><span class="line">c = torch.matmul(a,b)</span><br><span class="line">t1 = time.time()</span><br><span class="line"><span class="built_in">print</span>(a.device,t1-t0,c.norm(<span class="number">2</span>))</span><br><span class="line"> </span><br><span class="line">device = torch.device(<span class="string">&#x27;cuda&#x27;</span>)</span><br><span class="line">a = a.to(device)</span><br><span class="line">b = b.to(device)</span><br><span class="line">t0 = time.time()</span><br><span class="line">c = torch.matmul(a,b)</span><br><span class="line">t1 = time.time()</span><br><span class="line"><span class="built_in">print</span>(a.device,t1-t0,c.norm(<span class="number">2</span>))</span><br><span class="line"> </span><br><span class="line">t0 = time.time()</span><br><span class="line">c = torch.matmul(a,b)</span><br><span class="line">t1 = time.time()</span><br><span class="line"><span class="built_in">print</span>(a.device,t1-t0,c.norm(<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+          <h1 id="Jetson-Orin-环境配置"><a href="#Jetson-Orin-环境配置" class="headerlink" title="Jetson Orin 环境配置"></a>Jetson Orin 环境配置</h1><p>Jetson AGX Orin<br>Ubuntu 22.04</p>
+<h2 id="安装-torch-和-torchvision-和-cuda-等"><a href="#安装-torch-和-torchvision-和-cuda-等" class="headerlink" title="安装 torch 和 torchvision 和 cuda 等"></a>安装 torch 和 torchvision 和 cuda 等</h2><p>注意版本和安装系统即可。<br>之后再补全。  </p>
+<p>后续测试3D Gaussian Splatting时发现要求cuda11，而Orin Ubuntu 22.04似乎只兼容cuda12。<br>暂时打算重装，换成20.04。</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>测试torch能否正确调用cuda<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="comment"># 以下代码只有在PyTorch GPU版本上才会执行</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br><span class="line">a = torch.randn(<span class="number">10000</span>,<span class="number">1000</span>)</span><br><span class="line">b = torch.randn(<span class="number">1000</span>,<span class="number">2000</span>)</span><br><span class="line">t0 = time.time()</span><br><span class="line">c = torch.matmul(a,b)</span><br><span class="line">t1 = time.time()</span><br><span class="line"><span class="built_in">print</span>(a.device,t1-t0,c.norm(<span class="number">2</span>))</span><br><span class="line"> </span><br><span class="line">device = torch.device(<span class="string">&#x27;cuda&#x27;</span>)</span><br><span class="line">a = a.to(device)</span><br><span class="line">b = b.to(device)</span><br><span class="line">t0 = time.time()</span><br><span class="line">c = torch.matmul(a,b)</span><br><span class="line">t1 = time.time()</span><br><span class="line"><span class="built_in">print</span>(a.device,t1-t0,c.norm(<span class="number">2</span>))</span><br><span class="line"> </span><br><span class="line">t0 = time.time()</span><br><span class="line">c = torch.matmul(a,b)</span><br><span class="line">t1 = time.time()</span><br><span class="line"><span class="built_in">print</span>(a.device,t1-t0,c.norm(<span class="number">2</span>))</span><br></pre></td></tr></table></figure></p>
 <p>本文参考 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/640233255">知乎</a></p>
-<h2 id="安装yolov5">安装yolov5</h2>
-<h3 id="什么是yolov5">什么是yolov5</h3>
-<p>待补充</p>
-<h3 id="具体过程">具体过程</h3>
-<h4 id="安装">安装</h4>
-<pre><code class="language-bash">#Step 1. Access the terminal of Jetson device, install pip and upgrade it
+<h2 id="安装yolov5"><a href="#安装yolov5" class="headerlink" title="安装yolov5"></a>安装yolov5</h2><h3 id="什么是yolov5"><a href="#什么是yolov5" class="headerlink" title="什么是yolov5"></a>什么是yolov5</h3><p>待补充</p>
+<h3 id="具体过程"><a href="#具体过程" class="headerlink" title="具体过程"></a>具体过程</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code class="lang-bash">#Step 1. Access the terminal of Jetson device, install pip and upgrade it
 sudo apt update
 sudo apt install -y python3-pip
 pip3 install --upgrade pip
@@ -573,7 +729,7 @@ pip3 install --upgrade pip
 git clone https://github.com/ultralytics/yolov5
 cd yolov5
 
-#然后把torch和torchvision注释掉，这两个需要单独安装
+# 然后把torch和torchvision注释掉，这两个需要单独安装
 
 vim requirements.txt
 # torch&gt;=1.7.0
@@ -583,19 +739,11 @@ sudo apt install -y libfreetype6-dev
 
 pip3 install -r requirements.txt
 </code></pre>
-<h2 id="yolov5测试">yolov5测试</h2>
-<p>参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/Monajim/article/details/121179797">CSDN</a></p>
-<p>环境配置好后，下载Yolov5预训练模型<br>
-<a target="_blank" rel="noopener" href="https://github.com/ultralytics/yolov5/releases">GitHub</a><br>
-下载模型：Yolo预训练模型：<a target="_blank" rel="noopener" href="http://Yolov5s.pt">Yolov5s.pt</a>、<a target="_blank" rel="noopener" href="http://Yolov5m.pt">Yolov5m.pt</a>、<a target="_blank" rel="noopener" href="http://Yolov5l.pt">Yolov5l.pt</a>、<a target="_blank" rel="noopener" href="http://Yolov5x.pt">Yolov5x.pt</a>  并放至Yolov5的根目录</p>
-<h3 id="图片测试">图片测试</h3>
-<h3 id="视频测试">视频测试</h3>
-<p>测试成功,但是发现帧率较低，只有20-30帧左右。</p>
-<p>疑似是缓存速度限制了计算速度。经检查GPU和CPU占用率都比较低。</p>
-<h2 id="tensorRT-测试？">tensorRT 测试？</h2>
-<h2 id="mediapipe">mediapipe</h2>
-<h2 id="3D-Gaussian-Splatting">3D Gaussian Splatting</h2>
-<p>待测试。</p>
+<h2 id="yolov5测试"><a href="#yolov5测试" class="headerlink" title="yolov5测试"></a>yolov5测试</h2><p>参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/Monajim/article/details/121179797">CSDN</a></p>
+<p>环境配置好后，下载Yolov5预训练模型<br><a target="_blank" rel="noopener" href="https://github.com/ultralytics/yolov5/releases">GitHub</a><br>下载模型：Yolo预训练模型：Yolov5s.pt、Yolov5m.pt、Yolov5l.pt、Yolov5x.pt  并放至Yolov5的根目录</p>
+<h3 id="图片测试"><a href="#图片测试" class="headerlink" title="图片测试"></a>图片测试</h3><h3 id="视频测试"><a href="#视频测试" class="headerlink" title="视频测试"></a>视频测试</h3><p>测试成功,但是发现帧率较低，只有20-30帧左右。  </p>
+<p>疑似是缓存速度限制了计算速度。经检查GPU和CPU占用率都比较低。  </p>
+<h2 id="tensorRT-测试？"><a href="#tensorRT-测试？" class="headerlink" title="tensorRT 测试？"></a>tensorRT 测试？</h2><h2 id="mediapipe"><a href="#mediapipe" class="headerlink" title="mediapipe"></a>mediapipe</h2><h2 id="3D-Gaussian-Splatting"><a href="#3D-Gaussian-Splatting" class="headerlink" title="3D Gaussian Splatting"></a>3D Gaussian Splatting</h2><p>待测试。</p>
 
       
     </div>
@@ -669,41 +817,27 @@ pip3 install -r requirements.txt
       
           <p>目前来看主要是跟着两份文档走。</p>
 <ol>
-<li class="lvl-3">[rCore-Tutorial-Book-v3] (<a target="_blank" rel="noopener" href="https://rcore-os.cn/rCore-Tutorial-Book-v3">https://rcore-os.cn/rCore-Tutorial-Book-v3</a>) 这一份操作过程可能不够详细，但是讲了操作系统的基础知识，可以做课程的补充复习。</li>
-<li class="lvl-3"><a target="_blank" rel="noopener" href="https://rcore-os.cn/rCore-Tutorial-deploy">rCore-Tutorial-V3</a>   这一份看上去是之前版本的指导书。某些地方会比上一份文档讲的更清楚。</li>
+<li>[rCore-Tutorial-Book-v3] (<a target="_blank" rel="noopener" href="https://rcore-os.cn/rCore-Tutorial-Book-v3">https://rcore-os.cn/rCore-Tutorial-Book-v3</a>) 这一份操作过程可能不够详细，但是讲了操作系统的基础知识，可以做课程的补充复习。  </li>
+<li><a target="_blank" rel="noopener" href="https://rcore-os.cn/rCore-Tutorial-deploy">rCore-Tutorial-V3</a>   这一份看上去是之前版本的指导书。某些地方会比上一份文档讲的更清楚。</li>
 </ol>
-<h1>环境配置</h1>
-<p>按照 [rCore-Tutorial-Book-v3] (<a target="_blank" rel="noopener" href="https://rcore-os.cn/rCore-Tutorial-Book-v3/chapter0/5setup-devel-env.html#gdb">https://rcore-os.cn/rCore-Tutorial-Book-v3/chapter0/5setup-devel-env.html#gdb</a>)教程操作即可。</p>
-<p>有部分讲述不清楚的部分：</p>
+<h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><p>按照 [rCore-Tutorial-Book-v3] (<a target="_blank" rel="noopener" href="https://rcore-os.cn/rCore-Tutorial-Book-v3/chapter0/5setup-devel-env.html#gdb)教程操作即可。">https://rcore-os.cn/rCore-Tutorial-Book-v3/chapter0/5setup-devel-env.html#gdb)教程操作即可。</a></p>
+<p>有部分讲述不清楚的部分：  </p>
 <ol>
-<li class="lvl-3">
-<p>文中的 <code>os</code> 目录指的是 <code>rCore-Tutorial-v3</code>,需要从github上克隆。</p>
-</li>
+<li>文中的 <code>os</code> 目录指的是 <code>rCore-Tutorial-v3</code>,需要从github上克隆。 </li>
 </ol>
-<pre><code class="language-bash">$ git clone https://github.com/rcore-os/rCore-Tutorial-v3.git
+<pre><code class="lang-bash">$ git clone https://github.com/rcore-os/rCore-Tutorial-v3.git
 $ cd rCore-Tutorial-v3/os
 $ make run
 </code></pre>
-<ol start="2">
-<li class="lvl-3">
-<p>gdb调试的问题。原文太精简了，没太整明白。<br>
-实验书讨论区中有提到另一种方案（ 经本人验证后可以运行），参考GitBook上的内容 <a target="_blank" rel="noopener" href="https://rcore-os.cn/rCore-Tutorial-deploy/docs/pre-lab/gdb.html">rCore-Tutorial-deploy</a><br>
-另外记一下实验书讨论区中的注意事项。</p>
-</li>
+<ol>
+<li>gdb调试的问题。原文太精简了，没太整明白。<br>实验书讨论区中有提到另一种方案（ 经本人验证后可以运行），参考GitBook上的内容 <a target="_blank" rel="noopener" href="https://rcore-os.cn/rCore-Tutorial-deploy/docs/pre-lab/gdb.html">rCore-Tutorial-deploy</a><br>另外记一下实验书讨论区中的注意事项。  </li>
 </ol>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>python2环境</p>
-</li>
-<li class="lvl-2">
-<p>不要编译版本太高的gdb，我最初选择编译的是gdb14.1，莫名报错编译失败，后来使用gdb10.1版本源码编译就成功了</p>
-</li>
+<ul>
+<li>python2环境  </li>
+<li>不要编译版本太高的gdb，我最初选择编译的是gdb14.1，莫名报错编译失败，后来使用gdb10.1版本源码编译就成功了   </li>
 </ul>
-<h5 id="因为没有试过markdown加引用，这次也不想研究这个，姑且先这样吧（或者我可以期待有人无聊地去pull-request吗">因为没有试过markdown加引用，这次也不想研究这个，姑且先这样吧（或者我可以期待有人无聊地去pull request吗</h5>
-<ol start="3">
-<li class="lvl-3">
-<p>比较小白的问题。 编译安装后可以删掉解压后的安装包。不用留在原处污染目录（大概</p>
-</li>
+<h5 id="因为没有试过markdown加引用，这次也不想研究这个，姑且先这样吧（或者我可以期待有人无聊地去pull-request吗"><a href="#因为没有试过markdown加引用，这次也不想研究这个，姑且先这样吧（或者我可以期待有人无聊地去pull-request吗" class="headerlink" title="因为没有试过markdown加引用，这次也不想研究这个，姑且先这样吧（或者我可以期待有人无聊地去pull request吗"></a>因为没有试过markdown加引用，这次也不想研究这个，姑且先这样吧（或者我可以期待有人无聊地去pull request吗</h5><ol>
+<li>比较小白的问题。 编译安装后可以删掉解压后的安装包。不用留在原处污染目录（大概</li>
 </ol>
 
       
@@ -840,422 +974,57 @@ $ make run
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1>对象关系数据库系统（ORDBMS）和 PostgreSQL 基础</h1>
-<p>参考链接 <a target="_blank" rel="noopener" href="https://www.runoob.com/postgresql/postgresql-tutorial.html">菜鸟教程</a><br>
-对于太细节的东西不再记录，假如写的时候碰到了问题另做记录。</p>
-<h2 id="安装-PostgreSQL">安装 PostgreSQL</h2>
-<p>我是在wsl-Ubuntu 22.04 上安装的。</p>
+          <h1 id="对象关系数据库系统（ORDBMS）和-PostgreSQL-基础"><a href="#对象关系数据库系统（ORDBMS）和-PostgreSQL-基础" class="headerlink" title="对象关系数据库系统（ORDBMS）和 PostgreSQL 基础"></a>对象关系数据库系统（ORDBMS）和 PostgreSQL 基础</h1><p>参考链接 <a target="_blank" rel="noopener" href="https://www.runoob.com/postgresql/postgresql-tutorial.html">菜鸟教程</a><br>对于太细节的东西不再记录，假如写的时候碰到了问题另做记录。</p>
+<h2 id="安装-PostgreSQL"><a href="#安装-PostgreSQL" class="headerlink" title="安装 PostgreSQL"></a>安装 PostgreSQL</h2><p>我是在wsl-Ubuntu 22.04 上安装的。  </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install postgresql postgresql-client</span><br><span class="line">```  </span><br><span class="line">安装完毕后，系统会创建一个数据库超级用户 postgres，密码为空。登录用户并且进入psql控制台：  </span><br></pre></td></tr></table></figure>
-<p>sudo -i -u postgres</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">验证安装成功：</span><br></pre></td></tr></table></figure>
-<p>postgres@YoursName:~$ psql<br>
-psql (14.11 (Ubuntu 14.11-0ubuntu0.22.04.1))<br>
-Type “help” for help.</p>
-<p>postgres=#</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">按照原教程，退出PostgreSQL提示符的命令是</span><br></pre></td></tr></table></figure>
-<p>\q</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">不知道为什么，我这边的反应是：</span><br><span class="line">```shell</span><br><span class="line">postgres=# \q</span><br><span class="line">postgres@YourName:~$ q</span><br><span class="line">Command &#x27;q&#x27; not found, but can be installed with:</span><br><span class="line">snap install q                       # version 1.6.3-1, or</span><br><span class="line">apt  install python3-q-text-as-data  # version 3.1.6-1</span><br><span class="line">See &#x27;snap info q&#x27; for additional versions.</span><br></pre></td></tr></table></figure>
-<p>最后我使用了 <code>Ctrl+D </code>快捷键退出psql控制台。</p>
+<p>sudo -i -u postgres<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">验证安装成功：</span><br></pre></td></tr></table></figure><br>postgres@YoursName:~$ psql<br>psql (14.11 (Ubuntu 14.11-0ubuntu0.22.04.1))<br>Type “help” for help.</p>
+<p>postgres=#<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">按照原教程，退出PostgreSQL提示符的命令是</span><br></pre></td></tr></table></figure><br>\q<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">不知道为什么，我这边的反应是：</span><br><span class="line">```shell</span><br><span class="line">postgres=# \q</span><br><span class="line">postgres@YourName:~$ q</span><br><span class="line">Command &#x27;q&#x27; not found, but can be installed with:</span><br><span class="line">snap install q                       # version 1.6.3-1, or</span><br><span class="line">apt  install python3-q-text-as-data  # version 3.1.6-1</span><br><span class="line">See &#x27;snap info q&#x27; for additional versions.</span><br></pre></td></tr></table></figure></p>
+<p>最后我使用了 <code>Ctrl+D</code>快捷键退出psql控制台。</p>
 <p>PostgreSQL 安装完成后默认是已经启动的，但是也可以通过下面的方式来手动启动服务。</p>
 <pre><code>sudo /etc/init.d/postgresql start   # 开启
 sudo /etc/init.d/postgresql stop    # 关闭
 sudo /etc/init.d/postgresql restart # 重启
-</code></pre>
-<h2 id="PostgreSQL特征">PostgreSQL特征</h2>
-<ol>
-<li class="lvl-3">
-<p>函数：通过函数，可以在数据库服务器端执行指令程序。</p>
+</code></pre><h2 id="PostgreSQL特征"><a href="#PostgreSQL特征" class="headerlink" title="PostgreSQL特征"></a>PostgreSQL特征</h2><ol>
+<li><p>函数：通过函数，可以在数据库服务器端执行指令程序。</p>
 </li>
-<li class="lvl-3">
-<p>索引：用户可以自定义索引方法，或使用内置的 B 树，哈希表与 GiST 索引。</p>
+<li><p>索引：用户可以自定义索引方法，或使用内置的 B 树，哈希表与 GiST 索引。</p>
 </li>
-<li class="lvl-3">
-<p>触发器：触发器是由SQL语句查询所触发的事件。如：一个INSERT语句可能触发一个检查数据完整性的触发器。触发器通常由INSERT或UPDATE语句触发。</p>
+<li><p>触发器：触发器是由SQL语句查询所触发的事件。如：一个INSERT语句可能触发一个检查数据完整性的触发器。触发器通常由INSERT或UPDATE语句触发。</p>
 </li>
-<li class="lvl-3">
-<p>多版本并发控制：PostgreSQL使用多版本并发控制（MVCC，Multiversion concurrency control）系统进行并发控制，该系统向每个用户提供了一个数据库的&quot;快照&quot;，用户在事务内所作的每个修改，对于其他的用户都不可见，直到该事务成功提交。</p>
+<li><p>多版本并发控制：PostgreSQL使用多版本并发控制（MVCC，Multiversion concurrency control）系统进行并发控制，该系统向每个用户提供了一个数据库的”快照”，用户在事务内所作的每个修改，对于其他的用户都不可见，直到该事务成功提交。</p>
 </li>
-<li class="lvl-3">
-<p>规则：规则（RULE）允许一个查询能被重写，通常用来实现对视图（VIEW）的操作，如插入（INSERT）、更新（UPDATE）、删除（DELETE）。</p>
+<li><p>规则：规则（RULE）允许一个查询能被重写，通常用来实现对视图（VIEW）的操作，如插入（INSERT）、更新（UPDATE）、删除（DELETE）。</p>
 </li>
-<li class="lvl-3">
-<p>数据类型：包括文本、任意精度的数值数组、JSON 数据、枚举类型、XML 数据等。</p>
+<li><p>数据类型：包括文本、任意精度的数值数组、JSON 数据、枚举类型、XML 数据等。</p>
 </li>
-<li class="lvl-3">
-<p>全文检索：通过 Tsearch2 或 OpenFTS，8.3版本中内嵌 Tsearch2。</p>
+<li><p>全文检索：通过 Tsearch2 或 OpenFTS，8.3版本中内嵌 Tsearch2。</p>
 </li>
-<li class="lvl-3">
-<p>NoSQL：JSON，JSONB，XML，HStore 原生支持，至 NoSQL 数据库的外部数据包装器。</p>
+<li><p>NoSQL：JSON，JSONB，XML，HStore 原生支持，至 NoSQL 数据库的外部数据包装器。</p>
 </li>
-<li class="lvl-3">
-<p>数据仓库：能平滑迁移至同属 PostgreSQL 生态的 GreenPlum，DeepGreen，HAWK 等，使用 FDW 进行 ETL。</p>
+<li><p>数据仓库：能平滑迁移至同属 PostgreSQL 生态的 GreenPlum，DeepGreen，HAWK 等，使用 FDW 进行 ETL。  </p>
 </li>
 </ol>
-<h2 id="PostgreSQL-数据类型">PostgreSQL 数据类型</h2>
-<ol>
-<li class="lvl-3">
-<p>数值类型</p>
-</li>
-<li class="lvl-3">
-<p>货币类型</p>
-</li>
-<li class="lvl-3">
-<p>字符类型</p>
-</li>
-<li class="lvl-3">
-<p>日期/时间类型</p>
-</li>
-<li class="lvl-3">
-<p>布尔类型</p>
-</li>
-<li class="lvl-3">
-<p>枚举类型</p>
-</li>
-<li class="lvl-3">
-<p>几何类型</p>
-</li>
-<li class="lvl-3">
-<p>网络地址类型</p>
-</li>
-<li class="lvl-3">
-<p>位串类型</p>
-</li>
-<li class="lvl-4">
-<p>文本搜索类型</p>
-</li>
-<li class="lvl-4">
-<p>UUID类型</p>
-</li>
-<li class="lvl-4">
-<p>XML类型</p>
-</li>
-<li class="lvl-4">
-<p>JSON类型</p>
-</li>
-<li class="lvl-4">
-<p>数组类型</p>
-</li>
-<li class="lvl-4">
-<p>复合类型</p>
-</li>
-<li class="lvl-4">
-<p>范围类型</p>
-</li>
-<li class="lvl-4">
-<p>对象标识符（OID）类型</p>
-</li>
-<li class="lvl-4">
-<p>伪类型</p>
-</li>
+<h2 id="PostgreSQL-数据类型"><a href="#PostgreSQL-数据类型" class="headerlink" title="PostgreSQL 数据类型"></a>PostgreSQL 数据类型</h2><ol>
+<li>数值类型</li>
+<li>货币类型</li>
+<li>字符类型</li>
+<li>日期/时间类型 </li>
+<li>布尔类型 </li>
+<li>枚举类型 </li>
+<li>几何类型</li>
+<li>网络地址类型</li>
+<li>位串类型</li>
+<li>文本搜索类型</li>
+<li>UUID类型</li>
+<li>XML类型</li>
+<li>JSON类型</li>
+<li>数组类型</li>
+<li>复合类型</li>
+<li>范围类型</li>
+<li>对象标识符（OID）类型</li>
+<li>伪类型</li>
 </ol>
-<h2 id="PostgreSQL-语法">PostgreSQL 语法</h2>
-<p>有点太长了。建议直接查看 <a target="_blank" rel="noopener" href="https://www.runoob.com/postgresql/postgresql-syntax.html">菜鸟教程</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="Chinese">
-    <link itemprop="mainEntityOfPage" href="https://yours22.github.io/project/2024/03/03/Java-Java%E5%9F%BA%E7%A1%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/project/images/avatar.gif">
-      <meta itemprop="name" content="Yours22">
-      <meta itemprop="description" content="Yours22的个人博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yours22的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/project/2024/03/03/Java-Java%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">Java基础.md</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2024-03-03 16:54:08 / Modified: 17:08:43" itemprop="dateCreated datePublished" datetime="2024-03-03T16:54:08+08:00">2024-03-03</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="Chinese">
-    <link itemprop="mainEntityOfPage" href="https://yours22.github.io/project/2024/03/03/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-lecture-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/project/images/avatar.gif">
-      <meta itemprop="name" content="Yours22">
-      <meta itemprop="description" content="Yours22的个人博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yours22的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/project/2024/03/03/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-lecture-2/" class="post-title-link" itemprop="url">操作系统-lecture-2.md</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2024-03-03 16:50:57" itemprop="dateCreated datePublished" datetime="2024-03-03T16:50:57+08:00">2024-03-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-01 19:35:08" itemprop="dateModified" datetime="2024-04-01T19:35:08+08:00">2024-04-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/project/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/project/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1>第二讲 进程管理</h1>
-<h2 id="2-1-2-什么是进程">2.1.2 什么是进程</h2>
-<ol>
-<li class="lvl-3">
-<p>程序的代码</p>
-</li>
-<li class="lvl-3">
-<p>程序的数据</p>
-</li>
-<li class="lvl-3">
-<p>CPU寄存器的值</p>
-</li>
-<li class="lvl-3">
-<p>堆、栈</p>
-</li>
-<li class="lvl-3">
-<p>一组系统资源</p>
-</li>
-</ol>
-<h3 id="栈-Stack">栈  (Stack)</h3>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>用于暂存功能，保存程序运行时的上下文信息</p>
-</li>
-<li class="lvl-2">
-<p>在函数调用时，保存被调用函数的局部变量和形参</p>
-</li>
-</ul>
-<h3 id="堆-Heap">堆 (Heap)</h3>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>内存中的一块空间，用于动态分配；</p>
-</li>
-<li class="lvl-2">
-<p>在C语言中，通过malloc来申请动态内存空间，通过free来释放；</p>
-</li>
-<li class="lvl-2">
-<p>使用不当可能导致内存泄漏。</p>
-</li>
-</ul>
-<h3 id="进程的特性">进程的特性</h3>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>动态性：程序的运行状态在变，PC、寄存器、堆和栈等；</p>
-</li>
-<li class="lvl-2">
-<p>独立性：是一个独立的实体，是计算机系统资源的使用单位。每个进程在一个“虚拟计算机”上运行，每个进程都有“自己”的PC和内部状态，运行时独立于其他的进程（虚拟PC和物理PC）；</p>
-</li>
-<li class="lvl-2">
-<p>并发性：从宏观上看各进程是同时独立运行的</p>
-</li>
-</ul>
-<h3 id="进程的创建">进程的创建</h3>
-<p>引起进程创建的三个主要事件：</p>
-<ol>
-<li class="lvl-3">
-<p>系统初始化时；</p>
-</li>
-<li class="lvl-3">
-<p>在一个正在运行的进程当中，执行了创建进程的系统调用；</p>
-</li>
-<li class="lvl-3">
-<p>用户请求创建一个新进程。</p>
-</li>
-</ol>
-<p>从技术上来说，只有一种创建进程的方法，即在一个已经存在的进程（用户进程或系统进程）当中，通过系统调用来创建一个新的进程。</p>
-<p>Unix：fork函数；<br>
-Windows：CreateProcess函数;</p>
-<h3 id="进程的状态">进程的状态</h3>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>运行状态（Running）：进程占有CPU，并在CPU上运行。处于此状态的进程数目小于等于CPU的数目。</p>
-</li>
-<li class="lvl-2">
-<p>就绪状态（Ready）：进程已经具备运行条件，但由于CPU忙暂时不能运行，只要分得CPU即可执行；</p>
-</li>
-<li class="lvl-2">
-<p>阻塞状态（Blocked）：指进程因等待某种事件的发生而暂时不能运行的状态（如I/O操作或进程同步）,此时，即使CPU空闲，该进程也不能运行。</p>
-</li>
-</ul>
-<p>进程的创建：为该进程生成一个PCB。<br>
-进程的终止：回收它的PCB。<br>
-进程的组织管理：通过对PCB的组织管理来实现。</p>
-<h4 id="进程转换">进程转换</h4>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>运行 --&gt; 阻塞</p>
-</li>
-</ul>
-<ol>
-<li class="lvl-3">
-<p>等待I/O的结果</p>
-</li>
-<li class="lvl-3">
-<p>等待某一进程提供输入</p>
-</li>
-</ol>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>运行 --&gt; 就绪</p>
-</li>
-</ul>
-<ol>
-<li class="lvl-3">
-<p>运行进程用完了时间片</p>
-</li>
-<li class="lvl-3">
-<p>运行进程被中断，因为一高优先级进程处于就绪状态</p>
-</li>
-</ol>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>就绪 --&gt; 运行</p>
-</li>
-</ul>
-<ol>
-<li class="lvl-3">
-<p>调度程序选择一个新的进程运行</p>
-</li>
-</ol>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>阻塞 --&gt; 就绪</p>
-</li>
-</ul>
-<ol>
-<li class="lvl-3">
-<p>当所等待的事件发生时</p>
-</li>
-</ol>
-<p>系统为每个进程都维护了一个PCB，用来描述进程的基本情况以及运行变化的过程，PCB是进程存在的唯一标志。</p>
-<p>进程的创建：为该进程生成一个PCB；<br>
-进程的终止：回收它的PCB；<br>
-进程的组织管理：通过对PCB的组织管理来实现；</p>
-<p>操作系统 PCB 进程管理块  <a target="_blank" rel="noopener" href="https://blog.csdn.net/siriusol/article/details/106503794">CSDN</a></p>
-<img src="./img/os6.png" width="500" height="350" />
-<h3 id="状态队列">状态队列</h3>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>由操作系统来维护一组队列，用来表示系统当中所有进程的当前状态。</p>
-</li>
-<li class="lvl-2">
-<p>不同的状态分别用不同的队列来表示（运行队列、就绪队列、各种类型的阻塞队列）。</p>
-</li>
-<li class="lvl-2">
-<p>每个进程的PCB都根据它的状态加入到相应的队列当中，当一个进程的状态发生变化时，它的PCB从一个状态队列中脱离出来，加入到另外一个队列。</p>
-</li>
-</ul>
-<h2 id="线程">线程</h2>
-<p>比进程更小的独立运行的基本单位,满足以下特性：</p>
-<ol>
-<li class="lvl-3">
-<p>实体之间可以并发地执行；</p>
-</li>
-<li class="lvl-3">
-<p>实体之间共享相同的地址空间；</p>
-</li>
-</ol>
-<h3 id="什么是线程">什么是线程</h3>
-<p>进程是资源分配单位和操作系统保护单位，线程是CPU调度单位；进程拥有一个完整的资源平台，如代码、数据和堆，而线程只独享必不可少的资源如寄存器和栈线程同样具有就绪、阻塞和执行三种基本状态，同样具有状态之间的转换关系；线程能减少并发执行的时间和空间开销；线程 ＝ 轻量级进程（lightweight  process）</p>
-<h2 id="进程前通信与同步">进程前通信与同步</h2>
-<p>之前有事，跳过了一点，过后不一定补</p>
-<h3 id="进程间通信方式">进程间通信方式</h3>
-<h3 id="进程间互斥">进程间互斥</h3>
-<h3 id="基于关闭中断的互斥实现">基于关闭中断的互斥实现</h3>
-<h3 id="基于繁忙等待的互斥实现">基于繁忙等待的互斥实现</h3>
-<h4 id="加锁标志位法">加锁标志位法</h4>
-<h4 id="强制轮流法">强制轮流法</h4>
-<h4 id="Peterson方法">Peterson方法</h4>
-<h3 id="信号量">信号量</h3>
-<h3 id="进程间同步">进程间同步</h3>
+<h2 id="PostgreSQL-语法"><a href="#PostgreSQL-语法" class="headerlink" title="PostgreSQL 语法"></a>PostgreSQL 语法</h2><p>有点太长了。建议直接查看 <a target="_blank" rel="noopener" href="https://www.runoob.com/postgresql/postgresql-syntax.html">菜鸟教程</a>  </p>
 
       
     </div>
@@ -1339,7 +1108,7 @@ Windows：CreateProcess函数;</p>
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/project/archives">
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

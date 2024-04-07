@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"yours22.github.io","root":"/project/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Mediapipe 安装测试 具体过程参考在Jetson Nano上的文章 CSDN 基本介绍： 1.介绍 MediaPipe是一款由Google开发并开源的数据流处理机器学习应用开发框架。它是一个基于图的数据处理管线，用于构建使用了多种形式的数据源，如视频、音频、传感器数据以及任何时间序列数据。MediaPipe通过将各个感知模型抽象为模块并将其连接到可维护的图中来解决这些问题。优点：   有效">
+  <meta name="description" content="Mediapipe 安装测试具体过程参考在Jetson Nano上的文章 CSDN 基本介绍：   1.介绍MediaPipe是一款由Google开发并开源的数据流处理机器学习应用开发框架。它是一个基于图的数据处理管线，用于构建使用了多种形式的数据源，如视频、音频、传感器数据以及任何时间序列数据。MediaPipe通过将各个感知模型抽象为模块并将其连接到可维护的图中来解决这些问题。优点：  有效管">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jetson AGX Orin Mediapipe 安装测试">
 <meta property="og:url" content="https://yours22.github.io/project/2024/03/14/JetsonAGXOrin-Jetson-AGX-Orin-Mediapipie-%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95/index.html">
 <meta property="og:site_name" content="Yours22的博客">
-<meta property="og:description" content="Mediapipe 安装测试 具体过程参考在Jetson Nano上的文章 CSDN 基本介绍： 1.介绍 MediaPipe是一款由Google开发并开源的数据流处理机器学习应用开发框架。它是一个基于图的数据处理管线，用于构建使用了多种形式的数据源，如视频、音频、传感器数据以及任何时间序列数据。MediaPipe通过将各个感知模型抽象为模块并将其连接到可维护的图中来解决这些问题。优点：   有效">
+<meta property="og:description" content="Mediapipe 安装测试具体过程参考在Jetson Nano上的文章 CSDN 基本介绍：   1.介绍MediaPipe是一款由Google开发并开源的数据流处理机器学习应用开发框架。它是一个基于图的数据处理管线，用于构建使用了多种形式的数据源，如视频、音频、传感器数据以及任何时间序列数据。MediaPipe通过将各个感知模型抽象为模块并将其连接到可维护的图中来解决这些问题。优点：  有效管">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-03-14T13:47:27.000Z">
 <meta property="article:modified_time" content="2024-03-18T11:08:23.590Z">
@@ -218,40 +218,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1>Mediapipe 安装测试</h1>
-<p>具体过程参考在Jetson Nano上的文章 <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_56548850/article/details/123981579">CSDN</a></p>
-<p>基本介绍：</p>
-<p>1.介绍<br>
-MediaPipe是一款由Google开发并开源的数据流处理机器学习应用开发框架。它是一个基于图的数据处理管线，用于构建使用了多种形式的数据源，如视频、音频、传感器数据以及任何时间序列数据。MediaPipe通过将各个感知模型抽象为模块并将其连接到可维护的图中来解决这些问题。优点：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>有效管理资源(CPU和GPU)达到低延迟性能</p>
-</li>
-<li class="lvl-2">
-<p>处理诸如音频和视频帧之类的时间序列数据的同步</p>
-</li>
-<li class="lvl-2">
-<p>并测量性能和资源消耗（目前Google正在开发，尚未开源）</p>
-</li>
+        <h1 id="Mediapipe-安装测试"><a href="#Mediapipe-安装测试" class="headerlink" title="Mediapipe 安装测试"></a>Mediapipe 安装测试</h1><p>具体过程参考在Jetson Nano上的文章 <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_56548850/article/details/123981579">CSDN</a></p>
+<p>基本介绍：  </p>
+<p>1.介绍<br>MediaPipe是一款由Google开发并开源的数据流处理机器学习应用开发框架。它是一个基于图的数据处理管线，用于构建使用了多种形式的数据源，如视频、音频、传感器数据以及任何时间序列数据。MediaPipe通过将各个感知模型抽象为模块并将其连接到可维护的图中来解决这些问题。<br>优点：</p>
+<ul>
+<li>有效管理资源(CPU和GPU)达到低延迟性能</li>
+<li>处理诸如音频和视频帧之类的时间序列数据的同步</li>
+<li>并测量性能和资源消耗（目前Google正在开发，尚未开源）</li>
 </ul>
 <p>MediaPipe的主要组件包括：</p>
-<p>(1) 图（Graph）-有向图<br>
-(2) 数据包（Packet）<br>
-(3) 节点（Node）<br>
-(4) 数据流（Stream）<br>
-(5) 图配置（GraphConfig）<br>
-(6) 计算单元（Caculator）<br>
-(7) 子图（Subgraph）</p>
-<h2 id="安装编译器-Bazel-4-0-0">安装编译器 Bazel 4.0.0</h2>
-<p>没有Ubuntu 22.04对应版本，似乎要下载源码自行编译。<br>
-参考官方文档 <a target="_blank" rel="noopener" href="https://docs.bazel.build/versions/4.0.0/install-compile-source.html">Bazel</a><br>
-好像github上没有4.0.0了。</p>
-<p>安装最新版，切换到对应目录后：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bash ./compile.sh</span><br><span class="line">sudo <span class="built_in">cp</span> output/bazel /usr/local/bin</span><br></pre></td></tr></table></figure>
-<p>运行第一条命令后报错：</p>
-<pre><code>JDK Version(1.11) is lower than 21, please set $JAVA_HOME  
-</code></pre>
-<p>装了半天没装上，寄。Java安装也太反人类了。</p>
+<p>(1) 图（Graph）-有向图<br>(2) 数据包（Packet）<br>(3) 节点（Node）<br>(4) 数据流（Stream）<br>(5) 图配置（GraphConfig）<br>(6) 计算单元（Caculator）<br>(7) 子图（Subgraph） </p>
+<h2 id="安装编译器-Bazel-4-0-0"><a href="#安装编译器-Bazel-4-0-0" class="headerlink" title="安装编译器 Bazel 4.0.0"></a>安装编译器 Bazel 4.0.0</h2><p>没有Ubuntu 22.04对应版本，似乎要下载源码自行编译。<br>参考官方文档 <a target="_blank" rel="noopener" href="https://docs.bazel.build/versions/4.0.0/install-compile-source.html">Bazel</a><br>好像github上没有4.0.0了。  </p>
+<p>安装最新版，切换到对应目录后：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bash ./compile.sh</span><br><span class="line">sudo <span class="built_in">cp</span> output/bazel /usr/local/bin</span><br></pre></td></tr></table></figure></p>
+<p>运行第一条命令后报错：  </p>
+<pre><code>JDK Version(1.11) is lower than 21, please set $JAVA_HOME
+</code></pre><p>装了半天没装上，寄。Java安装也太反人类了。</p>
 
     </div>
 
@@ -332,7 +313,7 @@ MediaPipe是一款由Google开发并开源的数据流处理机器学习应用�
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Mediapipe 安装测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%BC%96%E8%AF%91%E5%99%A8-Bazel-4-0-0"><span class="nav-number">1.1.</span> <span class="nav-text">安装编译器 Bazel 4.0.0</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mediapipe-%E5%AE%89%E8%A3%85%E6%B5%8B%E8%AF%95"><span class="nav-number">1.</span> <span class="nav-text">Mediapipe 安装测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%BC%96%E8%AF%91%E5%99%A8-Bazel-4-0-0"><span class="nav-number">1.1.</span> <span class="nav-text">安装编译器 Bazel 4.0.0</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -345,7 +326,7 @@ MediaPipe是一款由Google开发并开源的数据流处理机器学习应用�
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/project/archives">
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
