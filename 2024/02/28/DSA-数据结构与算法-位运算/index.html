@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"yours22.github.io","root":"/project/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="位运算参考了菜鸟教程进一步用法可参考leetcode上别的课摸鱼写的。也没什么内容。hexo的next主题markdown渲染有些问题，暂时不想管了。 基本语法    符号 操作 描述     &amp; 与 如果两个位都是1，则结果为1，否则为0   &#96; &lt;&#x2F;code&gt;&#96; 或 如果两个位至少有一个为1，则结果为1，否则为0   ^ 异或 如果两个位不同，则结果为1，否则为0   ~">
+  <meta name="description" content="位运算 参考了菜鸟教程 进一步用法可参考leetcode 上别的课摸鱼写的。也没什么内容。hexo的next主题markdown渲染有些问题，暂时不想管了。 基本语法    符号 操作 描述     &amp; 与 如果两个位都是1，则结果为1，否则为0   &#96; &#96; 或   ^ 异或 如果两个位不同，则结果为1，否则为0   ~ 非 0变1，1变0   &lt;&lt; 左移 将位向左移动指定的位">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构与算法-位运算">
 <meta property="og:url" content="https://yours22.github.io/project/2024/02/28/DSA-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E4%BD%8D%E8%BF%90%E7%AE%97/index.html">
 <meta property="og:site_name" content="Yours22的博客">
-<meta property="og:description" content="位运算参考了菜鸟教程进一步用法可参考leetcode上别的课摸鱼写的。也没什么内容。hexo的next主题markdown渲染有些问题，暂时不想管了。 基本语法    符号 操作 描述     &amp; 与 如果两个位都是1，则结果为1，否则为0   &#96; &lt;&#x2F;code&gt;&#96; 或 如果两个位至少有一个为1，则结果为1，否则为0   ^ 异或 如果两个位不同，则结果为1，否则为0   ~">
+<meta property="og:description" content="位运算 参考了菜鸟教程 进一步用法可参考leetcode 上别的课摸鱼写的。也没什么内容。hexo的next主题markdown渲染有些问题，暂时不想管了。 基本语法    符号 操作 描述     &amp; 与 如果两个位都是1，则结果为1，否则为0   &#96; &#96; 或   ^ 异或 如果两个位不同，则结果为1，否则为0   ~ 非 0变1，1变0   &lt;&lt; 左移 将位向左移动指定的位">
 <meta property="og:locale">
 <meta property="article:published_time" content="2024-02-28T02:19:54.000Z">
 <meta property="article:modified_time" content="2024-03-19T02:25:49.793Z">
@@ -218,8 +218,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h1><p>参考了<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/bit-operation.html">菜鸟教程</a><br>进一步用法可参考<a target="_blank" rel="noopener" href="https://leetcode.cn/circle/discuss/mDhWhf/">leetcode</a><br>上别的课摸鱼写的。也没什么内容。hexo的next主题markdown渲染有些问题，暂时不想管了。</p>
-<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><div class="table-container">
+        <h1>位运算</h1>
+<p>参考了<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/bit-operation.html">菜鸟教程</a><br>
+进一步用法可参考<a target="_blank" rel="noopener" href="https://leetcode.cn/circle/discuss/mDhWhf/">leetcode</a><br>
+上别的课摸鱼写的。也没什么内容。hexo的next主题markdown渲染有些问题，暂时不想管了。</p>
+<h2 id="基本语法">基本语法</h2>
 <table>
 <thead>
 <tr>
@@ -236,9 +239,8 @@
 </tr>
 <tr>
 <td>`<code></td>
-<td>&lt;/code&gt;`</td>
+<td></code>`</td>
 <td>或</td>
-<td>如果两个位至少有一个为1，则结果为1，否则为0</td>
 </tr>
 <tr>
 <td>^</td>
@@ -262,22 +264,42 @@
 </tr>
 </tbody>
 </table>
-</div>
-<h2 id="常见用法"><a href="#常见用法" class="headerlink" title="常见用法"></a>常见用法</h2><h3 id="按位与-amp"><a href="#按位与-amp" class="headerlink" title="按位与 &amp;"></a>按位与 &amp;</h3><ol>
-<li>清零  </li>
-<li>取二进制数的指定位  </li>
-<li>判断奇偶  <h3 id="按位或"><a href="#按位或" class="headerlink" title="按位或 |"></a>按位或 |</h3></li>
-<li>把某些位设置为1</li>
-</ol>
-<h3 id="异或-（不进位加法）"><a href="#异或-（不进位加法）" class="headerlink" title="异或 ^ （不进位加法）"></a>异或 ^ （不进位加法）</h3><ol>
-<li>翻转指定位</li>
-<li>交换两个数 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Swap</span><span class="params">(<span class="type">int</span> &amp;a, <span class="type">int</span> &amp;b)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a != b)&#123;</span><br><span class="line">        a ^= b;</span><br><span class="line">        b ^= a;</span><br><span class="line">        a ^= b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">a ^= b;：这一步将a和b进行异或操作，并将结果存储在a中。此时，a的值实际上是原始的a和b的异或结果。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">b ^= a;：这一步将新的a（即a和b的异或结果）和b进行异或操作，并将结果存储在b中。由于异或操作的性质（一个数与同一个数异或两次结果还是原数），这一步实际上将b的值变为了原始的a的值。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">a ^= b;：这一步将新的b（即原始的a的值）和新的a（即a和b的异或结果）进行异或操作，并将结果存储在a中。同样由于异或操作的性质，这一步将a的值变为了原始的b的值。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">~~~  </span><br><span class="line"><span class="number">3.</span> 只出现一次的数字（<span class="number">24.3</span><span class="number">.19</span>，leetcode <span class="number">136</span>）  </span><br><span class="line"></span><br><span class="line">给你一个 非空 整数数组 nums ，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</span><br><span class="line"></span><br><span class="line">你必须设计并实现线性时间复杂度的算法来解决此问题，且该算法只使用常量额外空间。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 取反 ~</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 使一个数的最低位为<span class="number">0</span></span><br><span class="line"></span><br><span class="line">~~~C</span><br><span class="line">a &amp; ~ <span class="number">1</span></span><br><span class="line"> ~ <span class="number">1</span>=<span class="number">1111</span> <span class="number">1111</span> <span class="number">1111</span> <span class="number">1110</span> </span><br></pre></td></tr></table></figure>
+<h2 id="常见用法">常见用法</h2>
+<h3 id="按位与">按位与 &amp;</h3>
+<ol>
+<li class="lvl-3">
+<p>清零</p>
+</li>
+<li class="lvl-3">
+<p>取二进制数的指定位</p>
+</li>
+<li class="lvl-3">
+<p>判断奇偶</p>
 </li>
 </ol>
+<h3 id="按位或">按位或 |</h3>
+<ol>
+<li class="lvl-3">
+<p>把某些位设置为1</p>
+</li>
+</ol>
+<h3 id="异或-（不进位加法）">异或 ^ （不进位加法）</h3>
+<ol>
+<li class="lvl-3">
+<p>翻转指定位</p>
+</li>
+<li class="lvl-3">
+<p>交换两个数</p>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Swap</span><span class="params">(<span class="type">int</span> &amp;a, <span class="type">int</span> &amp;b)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a != b)&#123;</span><br><span class="line">        a ^= b;</span><br><span class="line">        b ^= a;</span><br><span class="line">        a ^= b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">a ^= b;：这一步将a和b进行异或操作，并将结果存储在a中。此时，a的值实际上是原始的a和b的异或结果。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">b ^= a;：这一步将新的a（即a和b的异或结果）和b进行异或操作，并将结果存储在b中。由于异或操作的性质（一个数与同一个数异或两次结果还是原数），这一步实际上将b的值变为了原始的a的值。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">a ^= b;：这一步将新的b（即原始的a的值）和新的a（即a和b的异或结果）进行异或操作，并将结果存储在a中。同样由于异或操作的性质，这一步将a的值变为了原始的b的值。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">~~~  </span><br><span class="line"><span class="number">3.</span> 只出现一次的数字（<span class="number">24.3</span><span class="number">.19</span>，leetcode <span class="number">136</span>）  </span><br><span class="line"></span><br><span class="line">给你一个 非空 整数数组 nums ，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</span><br><span class="line"></span><br><span class="line">你必须设计并实现线性时间复杂度的算法来解决此问题，且该算法只使用常量额外空间。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 取反 ~</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 使一个数的最低位为<span class="number">0</span></span><br><span class="line"></span><br><span class="line">~~~C</span><br><span class="line">a &amp; ~ <span class="number">1</span></span><br><span class="line"> ~ <span class="number">1</span>=<span class="number">1111</span> <span class="number">1111</span> <span class="number">1111</span> <span class="number">1110</span> </span><br></pre></td></tr></table></figure>
 <p>如上</p>
-<h3 id="左移-lt-lt-与-右移-gt-gt-s"><a href="#左移-lt-lt-与-右移-gt-gt-s" class="headerlink" title="左移 &lt;&lt; 与 右移 &gt;&gt;s"></a>左移 &lt;&lt; 与 右移 &gt;&gt;s</h3><p>每左（右）移一位，相当于乘（除）2  </p>
-<h2 id="常见运算技巧"><a href="#常见运算技巧" class="headerlink" title="常见运算技巧"></a>常见运算技巧</h2><p>进一步用法可参考<a target="_blank" rel="noopener" href="https://leetcode.cn/circle/discuss/mDhWhf/">leetcode</a>  </p>
-<h3 id="取相反数"><a href="#取相反数" class="headerlink" title="取相反数"></a>取相反数</h3><p>-a = ~ a + 1</p>
+<h3 id="左移-与-右移-s">左移 &lt;&lt; 与 右移 &gt;&gt;s</h3>
+<p>每左（右）移一位，相当于乘（除）2</p>
+<h2 id="常见运算技巧">常见运算技巧</h2>
+<p>进一步用法可参考<a target="_blank" rel="noopener" href="https://leetcode.cn/circle/discuss/mDhWhf/">leetcode</a></p>
+<h3 id="取相反数">取相反数</h3>
+<p>-a = ~ a + 1</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  1024 = 0b00000000000000000000010000000000</span><br><span class="line"> -1024 = 0b11111111111111111111110000000000</span><br><span class="line"> ~1024 = 0b11111111111111111111101111111111</span><br><span class="line">~-1024 = 0b00000000000000000000001111111111</span><br></pre></td></tr></table></figure>
 
     </div>
@@ -359,7 +381,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="nav-number">1.</span> <span class="nav-text">位运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">基本语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">常见用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E4%BD%8D%E4%B8%8E-amp"><span class="nav-number">1.2.1.</span> <span class="nav-text">按位与 &amp;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E4%BD%8D%E6%88%96"><span class="nav-number">1.2.2.</span> <span class="nav-text">按位或 |</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E6%88%96-%EF%BC%88%E4%B8%8D%E8%BF%9B%E4%BD%8D%E5%8A%A0%E6%B3%95%EF%BC%89"><span class="nav-number">1.2.3.</span> <span class="nav-text">异或 ^ （不进位加法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A6%E7%A7%BB-lt-lt-%E4%B8%8E-%E5%8F%B3%E7%A7%BB-gt-gt-s"><span class="nav-number">1.2.4.</span> <span class="nav-text">左移 &lt;&lt; 与 右移 &gt;&gt;s</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E8%BF%90%E7%AE%97%E6%8A%80%E5%B7%A7"><span class="nav-number">1.3.</span> <span class="nav-text">常见运算技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E7%9B%B8%E5%8F%8D%E6%95%B0"><span class="nav-number">1.3.1.</span> <span class="nav-text">取相反数</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">位运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">基本语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">常见用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E4%BD%8D%E4%B8%8E"><span class="nav-number">1.2.1.</span> <span class="nav-text">按位与 &amp;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E4%BD%8D%E6%88%96"><span class="nav-number">1.2.2.</span> <span class="nav-text">按位或 |</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E6%88%96-%EF%BC%88%E4%B8%8D%E8%BF%9B%E4%BD%8D%E5%8A%A0%E6%B3%95%EF%BC%89"><span class="nav-number">1.2.3.</span> <span class="nav-text">异或 ^ （不进位加法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A6%E7%A7%BB-%E4%B8%8E-%E5%8F%B3%E7%A7%BB-s"><span class="nav-number">1.2.4.</span> <span class="nav-text">左移 &lt;&lt; 与 右移 &gt;&gt;s</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E8%BF%90%E7%AE%97%E6%8A%80%E5%B7%A7"><span class="nav-number">1.3.</span> <span class="nav-text">常见运算技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E7%9B%B8%E5%8F%8D%E6%95%B0"><span class="nav-number">1.3.1.</span> <span class="nav-text">取相反数</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -372,7 +394,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/project/archives">
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

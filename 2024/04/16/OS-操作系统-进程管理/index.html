@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="Chinese">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/project/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/project/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/project/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/project/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/project/css/main.css">
+
+
+<link rel="stylesheet" href="/project/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yours22.github.io","root":"/project/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="第二讲 进程管理 2.1.2 什么是进程   程序的代码   程序的数据   CPU寄存器的值   堆、栈   一组系统资源   栈  (Stack)   用于暂存功能，保存程序运行时的上下文信息   在函数调用时，保存被调用函数的局部变量和形参   堆 (Heap)   内存中的一块空间，用于动态分配；   在C语言中，通过malloc来申请动态内存空间，通过free来释放；   使用不当可能导">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统-进程管理.md">
+<meta property="og:url" content="https://yours22.github.io/project/2024/04/16/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="Yours22的博客">
+<meta property="og:description" content="第二讲 进程管理 2.1.2 什么是进程   程序的代码   程序的数据   CPU寄存器的值   堆、栈   一组系统资源   栈  (Stack)   用于暂存功能，保存程序运行时的上下文信息   在函数调用时，保存被调用函数的局部变量和形参   堆 (Heap)   内存中的一块空间，用于动态分配；   在C语言中，通过malloc来申请动态内存空间，通过free来释放；   使用不当可能导">
+<meta property="og:locale">
+<meta property="og:image" content="https://yours22.github.io/project/2024/04/16/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/img/os6.png">
+<meta property="article:published_time" content="2024-04-16T02:13:38.000Z">
+<meta property="article:modified_time" content="2024-04-16T04:14:06.015Z">
+<meta property="article:author" content="Yours22">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yours22.github.io/project/2024/04/16/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/img/os6.png">
+
+<link rel="canonical" href="https://yours22.github.io/project/2024/04/16/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'Chinese'
+  };
+</script>
+
+  <title>操作系统-进程管理.md | Yours22的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/project/atom.xml" title="Yours22的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/project/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Yours22的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-首页">
+
+    <a href="/project/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-分类">
+
+    <a href="/project/%E5%88%86%E7%B1%BB/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/project/%E6%A0%87%E7%AD%BE/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-归档列表">
+
+    <a href="/project/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档列表</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="Chinese">
+    <link itemprop="mainEntityOfPage" href="https://yours22.github.io/project/2024/04/16/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/project/images/avatar.gif">
+      <meta itemprop="name" content="Yours22">
+      <meta itemprop="description" content="Yours22的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yours22的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          操作系统-进程管理.md
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-04-16 10:13:38 / Modified: 12:14:06" itemprop="dateCreated datePublished" datetime="2024-04-16T10:13:38+08:00">2024-04-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/project/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/project/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1>第二讲 进程管理</h1>
+<h2 id="2-1-2-什么是进程">2.1.2 什么是进程</h2>
+<ol>
+<li class="lvl-3">
+<p>程序的代码</p>
+</li>
+<li class="lvl-3">
+<p>程序的数据</p>
+</li>
+<li class="lvl-3">
+<p>CPU寄存器的值</p>
+</li>
+<li class="lvl-3">
+<p>堆、栈</p>
+</li>
+<li class="lvl-3">
+<p>一组系统资源</p>
+</li>
+</ol>
+<h3 id="栈-Stack">栈  (Stack)</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>用于暂存功能，保存程序运行时的上下文信息</p>
+</li>
+<li class="lvl-2">
+<p>在函数调用时，保存被调用函数的局部变量和形参</p>
+</li>
+</ul>
+<h3 id="堆-Heap">堆 (Heap)</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>内存中的一块空间，用于动态分配；</p>
+</li>
+<li class="lvl-2">
+<p>在C语言中，通过malloc来申请动态内存空间，通过free来释放；</p>
+</li>
+<li class="lvl-2">
+<p>使用不当可能导致内存泄漏。</p>
+</li>
+</ul>
+<h3 id="进程的特性">进程的特性</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>动态性：程序的运行状态在变，PC、寄存器、堆和栈等；</p>
+</li>
+<li class="lvl-2">
+<p>独立性：是一个独立的实体，是计算机系统资源的使用单位。每个进程在一个“虚拟计算机”上运行，每个进程都有“自己”的PC和内部状态，运行时独立于其他的进程（虚拟PC和物理PC）；</p>
+</li>
+<li class="lvl-2">
+<p>并发性：从宏观上看各进程是同时独立运行的</p>
+</li>
+</ul>
+<h3 id="进程的创建">进程的创建</h3>
+<p>引起进程创建的三个主要事件：</p>
+<ol>
+<li class="lvl-3">
+<p>系统初始化时；</p>
+</li>
+<li class="lvl-3">
+<p>在一个正在运行的进程当中，执行了创建进程的系统调用；</p>
+</li>
+<li class="lvl-3">
+<p>用户请求创建一个新进程。</p>
+</li>
+</ol>
+<p>从技术上来说，只有一种创建进程的方法，即在一个已经存在的进程（用户进程或系统进程）当中，通过系统调用来创建一个新的进程。</p>
+<p>Unix：fork函数；<br>
+Windows：CreateProcess函数;</p>
+<h3 id="进程的状态">进程的状态</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>运行状态（Running）：进程占有CPU，并在CPU上运行。处于此状态的进程数目小于等于CPU的数目。</p>
+</li>
+<li class="lvl-2">
+<p>就绪状态（Ready）：进程已经具备运行条件，但由于CPU忙暂时不能运行，只要分得CPU即可执行；</p>
+</li>
+<li class="lvl-2">
+<p>阻塞状态（Blocked）：指进程因等待某种事件的发生而暂时不能运行的状态（如I/O操作或进程同步）,此时，即使CPU空闲，该进程也不能运行。</p>
+</li>
+</ul>
+<p>进程的创建：为该进程生成一个PCB。<br>
+进程的终止：回收它的PCB。<br>
+进程的组织管理：通过对PCB的组织管理来实现。</p>
+<h4 id="进程转换">进程转换</h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>运行 --&gt; 阻塞</p>
+</li>
+</ul>
+<ol>
+<li class="lvl-3">
+<p>等待I/O的结果</p>
+</li>
+<li class="lvl-3">
+<p>等待某一进程提供输入</p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>运行 --&gt; 就绪</p>
+</li>
+</ul>
+<ol>
+<li class="lvl-3">
+<p>运行进程用完了时间片</p>
+</li>
+<li class="lvl-3">
+<p>运行进程被中断，因为一高优先级进程处于就绪状态</p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>就绪 --&gt; 运行</p>
+</li>
+</ul>
+<ol>
+<li class="lvl-3">
+<p>调度程序选择一个新的进程运行</p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>阻塞 --&gt; 就绪</p>
+</li>
+</ul>
+<ol>
+<li class="lvl-3">
+<p>当所等待的事件发生时</p>
+</li>
+</ol>
+<p>系统为每个进程都维护了一个PCB，用来描述进程的基本情况以及运行变化的过程，PCB是进程存在的唯一标志。</p>
+<p>进程的创建：为该进程生成一个PCB；<br>
+进程的终止：回收它的PCB；<br>
+进程的组织管理：通过对PCB的组织管理来实现；</p>
+<p>操作系统 PCB 进程管理块  <a target="_blank" rel="noopener" href="https://blog.csdn.net/siriusol/article/details/106503794">CSDN</a></p>
+<img src="./img/os6.png" width="500" height="350" />
+<h3 id="状态队列">状态队列</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>由操作系统来维护一组队列，用来表示系统当中所有进程的当前状态。</p>
+</li>
+<li class="lvl-2">
+<p>不同的状态分别用不同的队列来表示（运行队列、就绪队列、各种类型的阻塞队列）。</p>
+</li>
+<li class="lvl-2">
+<p>每个进程的PCB都根据它的状态加入到相应的队列当中，当一个进程的状态发生变化时，它的PCB从一个状态队列中脱离出来，加入到另外一个队列。</p>
+</li>
+</ul>
+<h2 id="线程">线程</h2>
+<p>比进程更小的独立运行的基本单位,满足以下特性：</p>
+<ol>
+<li class="lvl-3">
+<p>实体之间可以并发地执行；</p>
+</li>
+<li class="lvl-3">
+<p>实体之间共享相同的地址空间；</p>
+</li>
+</ol>
+<h3 id="什么是线程">什么是线程</h3>
+<p>进程是资源分配单位和操作系统保护单位，线程是CPU调度单位；进程拥有一个完整的资源平台，如代码、数据和堆，而线程只独享必不可少的资源如寄存器和栈线程同样具有就绪、阻塞和执行三种基本状态，同样具有状态之间的转换关系；线程能减少并发执行的时间和空间开销；线程 ＝ 轻量级进程（lightweight  process）</p>
+<h2 id="进程间通信与同步">进程间通信与同步</h2>
+<p>并发进程有两种关系：相互独立和关联。前者只竞争cpu使用，后者则需要进程间相互通信。</p>
+<h3 id="进程间通信方式">进程间通信方式</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>低级通信：只能传递状态和整数值（控制信息）</p>
+<ul class="lvl-2">
+<li class="lvl-4">信号量和信号</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>高级通信：能够传送任意数量的数据</p>
+<ul class="lvl-2">
+<li class="lvl-4">共享内存、消息传递、管道</li>
+</ul>
+</li>
+</ul>
+<h3 id="进程间互斥">进程间互斥</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>进程宏观上并发执行，依靠时钟中断来实现微观上轮流执行</p>
+</li>
+<li class="lvl-2">
+<p>访问共享资源</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//进程1			    </span></span><br><span class="line">tmp1 = count;</span><br><span class="line">tmp1 ++;</span><br><span class="line">count = tmp1;	               </span><br><span class="line"><span class="comment">//进程2</span></span><br><span class="line">tmp2 = count;</span><br><span class="line">tmp2 = tmp2+<span class="number">2</span>;</span><br><span class="line">count = tmp2;</span><br></pre></td></tr></table></figure>
+<p>假如不进一步限制，考虑这些语句的执行先后，最后count可能有1，2，3，4四种结果。</p>
+<h4 id="竞争状态">竞争状态</h4>
+<p>两个或多个进程对同一共享数据同时进行读写操作，而最后的结果是不可预测的，它取决于各个进程具体运行情况。<br>
+所以在同一个时刻只允许一个进程访问一个共享数据。<br>
+互斥指的就是进程不能访问正在被别的进程访问的数据。</p>
+<p>对于竞争问题的抽象描述：<br>
+把一个进程在运行过程中所做的事情分为两类：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>进程内部的计算或其他的一些事情，肯定不会导致竞争状态的出现；</p>
+</li>
+<li class="lvl-2">
+<p>对共享内存或共享文件的访问，可能会导致竞争状态的出现。我们把完成这类事情的那段程序称为 <strong>临界区</strong> ，把需要互斥访问的共享资源称为 <strong>临界资源</strong>。</p>
+</li>
+</ul>
+<p>如果我们能设计出某种方法，使得任何两个进程都不会同时出现在临界区中，就可以避免竞争状态的出现。</p>
+<h4 id="互斥访问">互斥访问</h4>
+<p>要实现互斥访问，一般要满足四个条件：</p>
+<ol>
+<li class="lvl-3">
+<p>任何两个进程都不能同时进入临界区；</p>
+</li>
+<li class="lvl-3">
+<p>不能事先假定CPU的个数和运行速度；</p>
+</li>
+<li class="lvl-3">
+<p>当一个进程运行在它的临界区外面时，不能妨碍其他的进程进入临界区；</p>
+</li>
+<li class="lvl-3">
+<p>任何一个进程进入临界区的要求应该在有限时间内得到满足。</p>
+</li>
+</ol>
+<h3 id="基于关闭中断的互斥实现">基于关闭中断的互斥实现</h3>
+<p>当一个进程进入临界区后，关闭所有的中断；当它退出临界区时，再打开中断。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>进程的切换是由中断引发的，关闭中断后，CPU不会被分配给其他进程，其他进程无法执行。</p>
+</li>
+<li class="lvl-2">
+<p>操作系统内核经常使用这种方法来更新内部的数据结构（变量、链表等）。</p>
+</li>
+</ul>
+<h3 id="基于繁忙等待的互斥实现">基于繁忙等待的互斥实现</h3>
+<h4 id="加锁标志位法">加锁标志位法</h4>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(lock);<span class="comment">//共享变量</span></span><br><span class="line">lock=<span class="number">1</span>;</span><br><span class="line">临界区</span><br><span class="line">lock=<span class="number">0</span>;</span><br><span class="line">```  </span><br><span class="line">lock的初始值为<span class="number">0</span>，当一个进程想进入临界区时，先查看lock的值，若为<span class="number">1</span>，说明已有进程在临界区，只好循环等待。等它变成了<span class="number">0</span>，才可进入。每个进程的操作类似。例如，图书馆借书。  </span><br><span class="line"></span><br><span class="line">但是关于lock也可能出现竞争问题。  </span><br><span class="line"></span><br><span class="line">#### 强制轮流法</span><br><span class="line"></span><br><span class="line">```C</span><br><span class="line"><span class="comment">//process 0</span></span><br><span class="line"><span class="keyword">while</span>(turn!=<span class="number">0</span>);</span><br><span class="line">临界区</span><br><span class="line">turn=<span class="number">1</span>;</span><br><span class="line">非临界区</span><br><span class="line"></span><br><span class="line"><span class="comment">//process 1</span></span><br><span class="line"><span class="keyword">while</span>(turn!=<span class="number">1</span>);</span><br><span class="line">临界区</span><br><span class="line">turn=<span class="number">0</span>;</span><br><span class="line">非临界区</span><br><span class="line">```  </span><br><span class="line">基本思想：每个进程严格地按照轮流的顺序来进入临界区。</span><br><span class="line">优点：保证在任何时刻最多只有一个进程在临界区</span><br><span class="line">缺点：违反了互斥访问四条件中的第三个条件</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### Peterson方法</span><br><span class="line"></span><br><span class="line">```C</span><br><span class="line"><span class="comment">//process 0</span></span><br><span class="line">enter_region(<span class="number">0</span>);</span><br><span class="line">临界区</span><br><span class="line">leave_region(<span class="number">0</span>);</span><br><span class="line">非临界区</span><br><span class="line"></span><br><span class="line"><span class="comment">//process 1</span></span><br><span class="line">enter_region(<span class="number">1</span>);</span><br><span class="line">临界区</span><br><span class="line">leave_region(<span class="number">1</span>);</span><br><span class="line">非临界区</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">当一个进程想进入临界区时，先调用enter_region函数，判断是否能安全进入，不能的话等待；当它从临界区退出后，需调用leave_region函数，允许其它进程进入临界区。两个函数的参数均为进程号。  </span><br><span class="line"></span><br><span class="line">```C</span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  FALSE  0</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  TRUE    1</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>   N           2		<span class="comment">// 进程的个数  </span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span>  turn;			<span class="comment">// 轮到谁？</span></span><br><span class="line"><span class="type">int</span>  interested[N];		<span class="comment">// 兴趣数组，初始值均为FALSE</span></span><br><span class="line"><span class="type">void</span>  <span class="title function_">enter_region</span> <span class="params">( <span class="type">int</span>  process)</span>	<span class="comment">// process = 0 或 1</span></span><br><span class="line">&#123;</span><br><span class="line">        <span class="type">int</span>  other;		<span class="comment">// 另外一个进程的进程号</span></span><br><span class="line">        other  =  <span class="number">1</span>  -  process;</span><br><span class="line">        interested[process]  =  TRUE;	<span class="comment">// 表明本进程感兴趣</span></span><br><span class="line">        turn  =  process;		<span class="comment">// 设置标志位</span></span><br><span class="line">        <span class="keyword">while</span>( turn == process &amp;&amp; interested[other] == TRUE);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span>  <span class="title function_">leave_region</span> <span class="params">( <span class="type">int</span>  process)</span></span><br><span class="line">&#123;</span><br><span class="line">      interested[process]  =  FALSE;	<span class="comment">// 本进程已离开临界区</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>关于peterson算法的重要性，可以自行搜索。</p>
+<h4 id="新的问题">新的问题</h4>
+<p>以上的各种方法，都是基于繁忙等待(busy waiting)的策略，都可归纳为一种形式：当一个进程想要进入它的临界区时，首先检查一下是否允许它进入，若允许，就直接进入了；若不允许，就在那里循环地等待，一直等到允许它进入（如何使用？）。</p>
+<p>缺点：</p>
+<ol>
+<li class="lvl-3">
+<p>浪费CPU时间；</p>
+</li>
+<li class="lvl-3">
+<p>可能导致预料之外的结果如：一个低优先级进程位于临界区中，这时有一个高优先级的进程也试图进入临界区<br>
+一个低优先级的进程正在临界区中；另一个高优先级的进程就绪了；调度器把CPU分配给高优先级的进程；该进程也想进入临界区；高优先级进程将会循环等待，等待低优先级进程退出临界区；低优先级进程无法获得CPU，无法离开临界区。</p>
+</li>
+</ol>
+<p><strong>如何解决？</strong></p>
+<ol>
+<li class="lvl-3">
+<p>当一个进程无法进入临界区时，应该被阻塞起来（sleep）；</p>
+</li>
+<li class="lvl-3">
+<p>当一个进程离开临界区时，需要去唤醒（wake up）被阻塞的进程；</p>
+</li>
+<li class="lvl-3">
+<p>克服了繁忙等待方法的两个缺点（浪费CPU时间、可能死锁）。</p>
+</li>
+</ol>
+<p>现有的进程互斥问题形式：两个或多个进程都想进入各自的临界区，但在任何时刻，只允许一个进程进入临界区。</p>
+<p>新的进程互斥问题形式：两个或多个进程都想进入各自的临界区，但在任何时刻，只允许 N 个进程同时进入临界区（N ≥ 1）。</p>
+<h3 id="信号量">信号量</h3>
+<p>1965年由著名的荷兰计算机科学家Dijkstra提出，其基本思路是用一种新的变量类型 <code>semaphore</code> 来记录当前可用资源的数量。</p>
+<p><code>semaphore</code>的取值可正可负，正数表示当前空闲资源的数量，负数的绝对值表示正在等待进入临界区的进程个数。</p>
+<p>信号量是由操作系统来维护的，用户进程只能通过初始化和两个标准原语（P、V原语）来访问。初始化可指定一个非负整数，即空闲资源总数。</p>
+<p>P、V原语包含有进程的阻塞和唤醒机制，因此在进程等待进入临界区时不会浪费CPU时间；</p>
+<p>P原语：申请一个空闲资源（把信号量减1），若成功，则退出；若失败，则该进程被阻塞；<br>
+V原语：释放一个被占用的资源（把信号量加1），若发现有被阻塞的进程，则选择一个唤醒之。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">typedef</span>   <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">  <span class="type">int</span>   count;			<span class="comment">// 计数变量        </span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span>  <span class="title">PCB</span> *<span class="title">queue</span>;</span>	<span class="comment">// 进程等待队列</span></span><br><span class="line">  &#125; semaphore;</span><br><span class="line"></span><br><span class="line">P( semaphore  S)&#123;</span><br><span class="line">  --S.count;		<span class="comment">//表示申请一个资源;</span></span><br><span class="line">  <span class="keyword">if</span> (S.count &lt; <span class="number">0</span>)	<span class="comment">//表示没有空闲资源;</span></span><br><span class="line">  &#123;</span><br><span class="line">      该进程进入等待队列S.<span class="built_in">queue</span>末尾;</span><br><span class="line">      阻塞该进程;</span><br><span class="line">      调用进程调度器；<span class="comment">// OSSched( )</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">V( semaphore  S)&#123;</span><br><span class="line">  ++S.count;		<span class="comment">//表示释放一个资源;</span></span><br><span class="line">  <span class="keyword">if</span> (S.count &lt;= <span class="number">0</span>)	<span class="comment">//表示有进程被阻塞;</span></span><br><span class="line">  &#123;</span><br><span class="line">      从等待队列S.<span class="built_in">queue</span>中取出一个进程;</span><br><span class="line">      把该进程改为就绪状态，插入就绪队列</span><br><span class="line">  &#125;</span><br><span class="line">&#125;  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="进程间同步">进程间同步</h3>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/project/2024/04/08/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/" rel="prev" title="操作系统-存储管理.md">
+      <i class="fa fa-chevron-left"></i> 操作系统-存储管理.md
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">第二讲 进程管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-2-%E4%BB%80%E4%B9%88%E6%98%AF%E8%BF%9B%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">2.1.2 什么是进程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%88-Stack"><span class="nav-number">1.1.1.</span> <span class="nav-text">栈  (Stack)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86-Heap"><span class="nav-number">1.1.2.</span> <span class="nav-text">堆 (Heap)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.3.</span> <span class="nav-text">进程的特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-number">1.1.4.</span> <span class="nav-text">进程的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81"><span class="nav-number">1.1.5.</span> <span class="nav-text">进程的状态</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">进程转换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E9%98%9F%E5%88%97"><span class="nav-number">1.1.6.</span> <span class="nav-text">状态队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.2.</span> <span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.2.1.</span> <span class="nav-text">什么是线程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E4%B8%8E%E5%90%8C%E6%AD%A5"><span class="nav-number">1.3.</span> <span class="nav-text">进程间通信与同步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F"><span class="nav-number">1.3.1.</span> <span class="nav-text">进程间通信方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E4%BA%92%E6%96%A5"><span class="nav-number">1.3.2.</span> <span class="nav-text">进程间互斥</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AB%9E%E4%BA%89%E7%8A%B6%E6%80%81"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">竞争状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%92%E6%96%A5%E8%AE%BF%E9%97%AE"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">互斥访问</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%85%B3%E9%97%AD%E4%B8%AD%E6%96%AD%E7%9A%84%E4%BA%92%E6%96%A5%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.3.3.</span> <span class="nav-text">基于关闭中断的互斥实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%B9%81%E5%BF%99%E7%AD%89%E5%BE%85%E7%9A%84%E4%BA%92%E6%96%A5%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.3.4.</span> <span class="nav-text">基于繁忙等待的互斥实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E9%94%81%E6%A0%87%E5%BF%97%E4%BD%8D%E6%B3%95"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">加锁标志位法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">新的问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="nav-number">1.3.5.</span> <span class="nav-text">信号量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E5%90%8C%E6%AD%A5"><span class="nav-number">1.3.6.</span> <span class="nav-text">进程间同步</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yours22</p>
+  <div class="site-description" itemprop="description">Yours22的个人博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/project/archives">
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/project/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/project/%E6%A0%87%E7%AD%BE/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/project/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yours22</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/project/lib/anime.min.js"></script>
+  <script src="/project/lib/velocity/velocity.min.js"></script>
+  <script src="/project/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/project/js/utils.js"></script>
+
+<script src="/project/js/motion.js"></script>
+
+
+<script src="/project/js/schemes/muse.js"></script>
+
+
+<script src="/project/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+
+</html>

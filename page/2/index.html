@@ -158,6 +158,251 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="Chinese">
+    <link itemprop="mainEntityOfPage" href="https://yours22.github.io/project/2024/03/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%AE%A1%E7%BD%91%E5%9F%BA%E7%A1%80-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/project/images/avatar.gif">
+      <meta itemprop="name" content="Yours22">
+      <meta itemprop="description" content="Yours22的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yours22的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/project/2024/03/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%AE%A1%E7%BD%91%E5%9F%BA%E7%A1%80-1/" class="post-title-link" itemprop="url">计网基础-1.md</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-03-03 17:00:03 / Modified: 17:08:43" itemprop="dateCreated datePublished" datetime="2024-03-03T17:00:03+08:00">2024-03-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="Chinese">
+    <link itemprop="mainEntityOfPage" href="https://yours22.github.io/project/2024/03/03/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL%E5%9F%BA%E7%A1%80-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/project/images/avatar.gif">
+      <meta itemprop="name" content="Yours22">
+      <meta itemprop="description" content="Yours22的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yours22的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/project/2024/03/03/%E6%95%B0%E6%8D%AE%E5%BA%93-SQL%E5%9F%BA%E7%A1%80-1/" class="post-title-link" itemprop="url">postSQL基础-1.md</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2024-03-03 16:56:58" itemprop="dateCreated datePublished" datetime="2024-03-03T16:56:58+08:00">2024-03-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-03-04 11:10:26" itemprop="dateModified" datetime="2024-03-04T11:10:26+08:00">2024-03-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/project/categories/PostgreSQL/" itemprop="url" rel="index"><span itemprop="name">PostgreSQL</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/project/categories/PostgreSQL/BASIC/" itemprop="url" rel="index"><span itemprop="name">BASIC</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1>对象关系数据库系统（ORDBMS）和 PostgreSQL 基础</h1>
+<p>参考链接 <a target="_blank" rel="noopener" href="https://www.runoob.com/postgresql/postgresql-tutorial.html">菜鸟教程</a><br>
+对于太细节的东西不再记录，假如写的时候碰到了问题另做记录。</p>
+<h2 id="安装-PostgreSQL">安装 PostgreSQL</h2>
+<p>我是在wsl-Ubuntu 22.04 上安装的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install postgresql postgresql-client</span><br><span class="line">```  </span><br><span class="line">安装完毕后，系统会创建一个数据库超级用户 postgres，密码为空。登录用户并且进入psql控制台：  </span><br></pre></td></tr></table></figure>
+<p>sudo -i -u postgres</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">验证安装成功：</span><br></pre></td></tr></table></figure>
+<p>postgres@YoursName:~$ psql<br>
+psql (14.11 (Ubuntu 14.11-0ubuntu0.22.04.1))<br>
+Type “help” for help.</p>
+<p>postgres=#</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">按照原教程，退出PostgreSQL提示符的命令是</span><br></pre></td></tr></table></figure>
+<p>\q</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">不知道为什么，我这边的反应是：</span><br><span class="line">```shell</span><br><span class="line">postgres=# \q</span><br><span class="line">postgres@YourName:~$ q</span><br><span class="line">Command &#x27;q&#x27; not found, but can be installed with:</span><br><span class="line">snap install q                       # version 1.6.3-1, or</span><br><span class="line">apt  install python3-q-text-as-data  # version 3.1.6-1</span><br><span class="line">See &#x27;snap info q&#x27; for additional versions.</span><br></pre></td></tr></table></figure>
+<p>最后我使用了 <code>Ctrl+D </code>快捷键退出psql控制台。</p>
+<p>PostgreSQL 安装完成后默认是已经启动的，但是也可以通过下面的方式来手动启动服务。</p>
+<pre><code>sudo /etc/init.d/postgresql start   # 开启
+sudo /etc/init.d/postgresql stop    # 关闭
+sudo /etc/init.d/postgresql restart # 重启
+</code></pre>
+<h2 id="PostgreSQL特征">PostgreSQL特征</h2>
+<ol>
+<li class="lvl-3">
+<p>函数：通过函数，可以在数据库服务器端执行指令程序。</p>
+</li>
+<li class="lvl-3">
+<p>索引：用户可以自定义索引方法，或使用内置的 B 树，哈希表与 GiST 索引。</p>
+</li>
+<li class="lvl-3">
+<p>触发器：触发器是由SQL语句查询所触发的事件。如：一个INSERT语句可能触发一个检查数据完整性的触发器。触发器通常由INSERT或UPDATE语句触发。</p>
+</li>
+<li class="lvl-3">
+<p>多版本并发控制：PostgreSQL使用多版本并发控制（MVCC，Multiversion concurrency control）系统进行并发控制，该系统向每个用户提供了一个数据库的&quot;快照&quot;，用户在事务内所作的每个修改，对于其他的用户都不可见，直到该事务成功提交。</p>
+</li>
+<li class="lvl-3">
+<p>规则：规则（RULE）允许一个查询能被重写，通常用来实现对视图（VIEW）的操作，如插入（INSERT）、更新（UPDATE）、删除（DELETE）。</p>
+</li>
+<li class="lvl-3">
+<p>数据类型：包括文本、任意精度的数值数组、JSON 数据、枚举类型、XML 数据等。</p>
+</li>
+<li class="lvl-3">
+<p>全文检索：通过 Tsearch2 或 OpenFTS，8.3版本中内嵌 Tsearch2。</p>
+</li>
+<li class="lvl-3">
+<p>NoSQL：JSON，JSONB，XML，HStore 原生支持，至 NoSQL 数据库的外部数据包装器。</p>
+</li>
+<li class="lvl-3">
+<p>数据仓库：能平滑迁移至同属 PostgreSQL 生态的 GreenPlum，DeepGreen，HAWK 等，使用 FDW 进行 ETL。</p>
+</li>
+</ol>
+<h2 id="PostgreSQL-数据类型">PostgreSQL 数据类型</h2>
+<ol>
+<li class="lvl-3">
+<p>数值类型</p>
+</li>
+<li class="lvl-3">
+<p>货币类型</p>
+</li>
+<li class="lvl-3">
+<p>字符类型</p>
+</li>
+<li class="lvl-3">
+<p>日期/时间类型</p>
+</li>
+<li class="lvl-3">
+<p>布尔类型</p>
+</li>
+<li class="lvl-3">
+<p>枚举类型</p>
+</li>
+<li class="lvl-3">
+<p>几何类型</p>
+</li>
+<li class="lvl-3">
+<p>网络地址类型</p>
+</li>
+<li class="lvl-3">
+<p>位串类型</p>
+</li>
+<li class="lvl-4">
+<p>文本搜索类型</p>
+</li>
+<li class="lvl-4">
+<p>UUID类型</p>
+</li>
+<li class="lvl-4">
+<p>XML类型</p>
+</li>
+<li class="lvl-4">
+<p>JSON类型</p>
+</li>
+<li class="lvl-4">
+<p>数组类型</p>
+</li>
+<li class="lvl-4">
+<p>复合类型</p>
+</li>
+<li class="lvl-4">
+<p>范围类型</p>
+</li>
+<li class="lvl-4">
+<p>对象标识符（OID）类型</p>
+</li>
+<li class="lvl-4">
+<p>伪类型</p>
+</li>
+</ol>
+<h2 id="PostgreSQL-语法">PostgreSQL 语法</h2>
+<p>有点太长了。建议直接查看 <a target="_blank" rel="noopener" href="https://www.runoob.com/postgresql/postgresql-syntax.html">菜鸟教程</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="Chinese">
     <link itemprop="mainEntityOfPage" href="https://yours22.github.io/project/2024/03/03/Java-Java%E5%9F%BA%E7%A1%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -198,163 +443,6 @@
 
       
           
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="Chinese">
-    <link itemprop="mainEntityOfPage" href="https://yours22.github.io/project/2024/03/03/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-lecture-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/project/images/avatar.gif">
-      <meta itemprop="name" content="Yours22">
-      <meta itemprop="description" content="Yours22的个人博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yours22的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/project/2024/03/03/OS-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-lecture-2/" class="post-title-link" itemprop="url">操作系统-lecture-2.md</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2024-03-03 16:50:57" itemprop="dateCreated datePublished" datetime="2024-03-03T16:50:57+08:00">2024-03-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-01 19:35:08" itemprop="dateModified" datetime="2024-04-01T19:35:08+08:00">2024-04-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/project/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/project/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="第二讲-进程管理"><a href="#第二讲-进程管理" class="headerlink" title="第二讲 进程管理"></a>第二讲 进程管理</h1><h2 id="2-1-2-什么是进程"><a href="#2-1-2-什么是进程" class="headerlink" title="2.1.2 什么是进程"></a>2.1.2 什么是进程</h2><ol>
-<li>程序的代码</li>
-<li>程序的数据</li>
-<li>CPU寄存器的值</li>
-<li>堆、栈</li>
-<li>一组系统资源  </li>
-</ol>
-<h3 id="栈-Stack"><a href="#栈-Stack" class="headerlink" title="栈  (Stack)"></a>栈  (Stack)</h3><ul>
-<li>用于暂存功能，保存程序运行时的上下文信息    </li>
-<li>在函数调用时，保存被调用函数的局部变量和形参  </li>
-</ul>
-<h3 id="堆-Heap"><a href="#堆-Heap" class="headerlink" title="堆 (Heap)"></a>堆 (Heap)</h3><ul>
-<li>内存中的一块空间，用于动态分配；</li>
-<li>在C语言中，通过malloc来申请动态内存空间，通过free来释放；</li>
-<li>使用不当可能导致内存泄漏。</li>
-</ul>
-<h3 id="进程的特性"><a href="#进程的特性" class="headerlink" title="进程的特性"></a>进程的特性</h3><ul>
-<li>动态性：程序的运行状态在变，PC、寄存器、堆和栈等；</li>
-<li>独立性：是一个独立的实体，是计算机系统资源的使用单位。每个进程在一个“虚拟计算机”上运行，每个进程都有“自己”的PC和内部状态，运行时独立于其他的进程（虚拟PC和物理PC）；</li>
-<li>并发性：从宏观上看各进程是同时独立运行的</li>
-</ul>
-<h3 id="进程的创建"><a href="#进程的创建" class="headerlink" title="进程的创建"></a>进程的创建</h3><p>引起进程创建的三个主要事件：</p>
-<ol>
-<li>系统初始化时；</li>
-<li>在一个正在运行的进程当中，执行了创建进程的系统调用；</li>
-<li>用户请求创建一个新进程。</li>
-</ol>
-<p>从技术上来说，只有一种创建进程的方法，即在一个已经存在的进程（用户进程或系统<br>进程）当中，通过系统调用来创建一个新的进程。  </p>
-<p>Unix：fork函数；<br>Windows：CreateProcess函数;</p>
-<h3 id="进程的状态"><a href="#进程的状态" class="headerlink" title="进程的状态"></a>进程的状态</h3><ul>
-<li><p>运行状态（Running）：进程占有CPU，并在CPU上运行。处于此状态的进程数目小于等于CPU的数目。</p>
-</li>
-<li><p>就绪状态（Ready）：进程已经具备运行条件，但由于CPU忙暂时不能运行，只要分得CPU即可执行；</p>
-</li>
-<li><p>阻塞状态（Blocked）：指进程因等待某种事件的发生而暂时不能运行的状态（如I/O操作或进程同步）,此时，即使CPU空闲，该进程也不能运行。</p>
-</li>
-</ul>
-<p>进程的创建：为该进程生成一个PCB。<br>进程的终止：回收它的PCB。<br>进程的组织管理：通过对PCB的组织管理来实现。  </p>
-<h4 id="进程转换"><a href="#进程转换" class="headerlink" title="进程转换"></a>进程转换</h4><ul>
-<li>运行 —&gt; 阻塞</li>
-</ul>
-<ol>
-<li>等待I/O的结果</li>
-<li>等待某一进程提供输入</li>
-</ol>
-<ul>
-<li>运行 —&gt; 就绪</li>
-</ul>
-<ol>
-<li>运行进程用完了时间片</li>
-<li>运行进程被中断，因为一高优先级进程处于就绪状态</li>
-</ol>
-<ul>
-<li>就绪 —&gt; 运行</li>
-</ul>
-<ol>
-<li>调度程序选择一个新的进程运行</li>
-</ol>
-<ul>
-<li>阻塞 —&gt; 就绪</li>
-</ul>
-<ol>
-<li>当所等待的事件发生时  </li>
-</ol>
-<p>系统为每个进程都维护了一个PCB，用来描述进程的基本情况以及运行变化的过程，PCB是进程存在的唯一标志。  </p>
-<p>进程的创建：为该进程生成一个PCB；<br>进程的终止：回收它的PCB；<br>进程的组织管理：通过对PCB的组织管理来实现；    </p>
-<p>操作系统 PCB 进程管理块  <a target="_blank" rel="noopener" href="https://blog.csdn.net/siriusol/article/details/106503794">CSDN</a></p>
-<p><img src="./img/os6.png" width="500" height="350" /></p>
-<h3 id="状态队列"><a href="#状态队列" class="headerlink" title="状态队列"></a>状态队列</h3><ul>
-<li>由操作系统来维护一组队列，用来表示系统当中所有进程的当前状态。  </li>
-<li>不同的状态分别用不同的队列来表示（运行队列、就绪队列、各种类型的阻塞队列）。  </li>
-<li>每个进程的PCB都根据它的状态加入到相应的队列当中，当一个进程的状态发生变化时，它的PCB从一个状态队列中脱离出来，加入到另外一个队列。  </li>
-</ul>
-<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p>比进程更小的独立运行的基本单位,满足以下特性：</p>
-<ol>
-<li>实体之间可以并发地执行；</li>
-<li>实体之间共享相同的地址空间；  <h3 id="什么是线程"><a href="#什么是线程" class="headerlink" title="什么是线程"></a>什么是线程</h3></li>
-</ol>
-<p>  进程是资源分配单位和操作系统保护单位，线程是CPU调度单位；<br>  进程拥有一个完整的资源平台，如代码、数据和堆，而线程只独享必不可少的资源如寄存器和栈<br>  线程同样具有就绪、阻塞和执行三种基本状态，同样具有状态之间的转换关系；<br>  线程能减少并发执行的时间和空间开销；<br>  线程 ＝ 轻量级进程（lightweight  process）</p>
-<h2 id="进程前通信与同步"><a href="#进程前通信与同步" class="headerlink" title="进程前通信与同步"></a>进程前通信与同步</h2><p>之前有事，跳过了一点，过后不一定补</p>
-<h3 id="进程间通信方式"><a href="#进程间通信方式" class="headerlink" title="进程间通信方式"></a>进程间通信方式</h3><h3 id="进程间互斥"><a href="#进程间互斥" class="headerlink" title="进程间互斥"></a>进程间互斥</h3><h3 id="基于关闭中断的互斥实现"><a href="#基于关闭中断的互斥实现" class="headerlink" title="基于关闭中断的互斥实现"></a>基于关闭中断的互斥实现</h3><h3 id="基于繁忙等待的互斥实现"><a href="#基于繁忙等待的互斥实现" class="headerlink" title="基于繁忙等待的互斥实现"></a>基于繁忙等待的互斥实现</h3><h4 id="加锁标志位法"><a href="#加锁标志位法" class="headerlink" title="加锁标志位法"></a>加锁标志位法</h4><h4 id="强制轮流法"><a href="#强制轮流法" class="headerlink" title="强制轮流法"></a>强制轮流法</h4><h4 id="Peterson方法"><a href="#Peterson方法" class="headerlink" title="Peterson方法"></a>Peterson方法</h4><h3 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h3><h3 id="进程间同步"><a href="#进程间同步" class="headerlink" title="进程间同步"></a>进程间同步</h3>
       
     </div>
 
@@ -431,17 +519,40 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h1><p>感觉以前看过，下了课慢慢补吧。  </p>
-<h2 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="type">int</span>&gt; <span class="title function_">vec</span><span class="params">(<span class="number">5</span>)</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="type">int</span>&gt; <span class="title function_">vec</span><span class="params">(<span class="number">10</span>,<span class="number">1</span>)</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="type">int</span>&gt; <span class="title function_">vec</span><span class="params">(tmp)</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="type">int</span>&gt; <span class="title function_">temp</span><span class="params">(vec.begin(),vec.begin()+<span class="number">3</span>)</span></span><br></pre></td></tr></table></figure>
-<h3 id="迭代器-Iterators"><a href="#迭代器-Iterators" class="headerlink" title="迭代器(Iterators)"></a>迭代器(Iterators)</h3><p>算法和容器的桥梁。<br>将迭代器作为算法的参数、通过迭代器来访问容器而不是把容器直接作为算法的参数。<br>将函数对象作为算法的参数而不是将函数所执行的运算作为算法的一部分。  </p>
-<h2 id="线性表的抽象基类-LinearList-h"><a href="#线性表的抽象基类-LinearList-h" class="headerlink" title="线性表的抽象基类 (LinearList.h)"></a>线性表的抽象基类 (LinearList.h)</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">template &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span> <span class="comment">//应用模板类描述线性表抽象数据类型</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinearList</span> &#123;</span>                  </span><br><span class="line">public:</span><br><span class="line">    LinearList(); <span class="comment">//构造函数</span></span><br><span class="line">    ~LinearList(); <span class="comment">//析构函数</span></span><br><span class="line">    virtual <span class="type">int</span> <span class="title function_">Size</span><span class="params">()</span> <span class="type">const</span> = <span class="number">0</span>;                   <span class="comment">//求表最大容量</span></span><br><span class="line">    virtual <span class="type">int</span> <span class="title function_">Length</span><span class="params">()</span> <span class="type">const</span> = <span class="number">0</span>;                 <span class="comment">//求表长度</span></span><br><span class="line">    virtual <span class="type">int</span> <span class="title function_">Search</span><span class="params">(T&amp; x)</span> <span class="type">const</span> = <span class="number">0</span>;             <span class="comment">//在表中搜索给定值x</span></span><br><span class="line">    virtual <span class="type">int</span> <span class="title function_">Locate</span><span class="params">(<span class="type">int</span> i)</span> <span class="type">const</span> = <span class="number">0</span>;            <span class="comment">//定位第i个元素</span></span><br><span class="line">    virtual <span class="type">bool</span> <span class="title function_">getData</span><span class="params">(<span class="type">int</span> i, T&amp; x)</span> <span class="type">const</span> = <span class="number">0</span>;    <span class="comment">//取第i个表项的值</span></span><br><span class="line">    virtual <span class="type">void</span> <span class="title function_">setData</span><span class="params">(<span class="type">int</span> i, T&amp; x)</span>= <span class="number">0</span>;           <span class="comment">//修改第i个表项的值  </span></span><br><span class="line">    virtual <span class="type">bool</span> <span class="title function_">Insert</span><span class="params">(<span class="type">int</span> i, T&amp; x)</span> = <span class="number">0</span>;           <span class="comment">//在第i个表项后插入x</span></span><br><span class="line">    virtual <span class="type">bool</span> <span class="title function_">Remove</span><span class="params">(<span class="type">int</span> i, T&amp; x)</span> = <span class="number">0</span>;           <span class="comment">//删除第i个表项</span></span><br><span class="line">    virtual <span class="type">bool</span> <span class="title function_">IsEmpty</span><span class="params">()</span> <span class="type">const</span> = <span class="number">0</span>;               <span class="comment">//判表空 </span></span><br><span class="line">    virtual <span class="type">bool</span> <span class="title function_">IsFull</span><span class="params">()</span> <span class="type">const</span> = <span class="number">0</span>;                <span class="comment">//判表满</span></span><br><span class="line">    virtual <span class="type">void</span> <span class="title function_">Sort</span><span class="params">()</span> = <span class="number">0</span>;                        <span class="comment">//排序</span></span><br><span class="line">    virtual <span class="type">void</span> <span class="title function_">input</span><span class="params">()</span> = <span class="number">0</span>;                       <span class="comment">//输入</span></span><br><span class="line">    virtual <span class="type">void</span> <span class="title function_">output</span><span class="params">()</span> = <span class="number">0</span>;                      <span class="comment">//输出</span></span><br><span class="line">    virtual LinearList&lt;T&gt;&amp; operator= </span><br><span class="line">                (LinearList&lt;T&gt;&amp; L) = <span class="number">0</span>;             <span class="comment">//赋值</span></span><br><span class="line">&#125;;  <span class="comment">//在基类中预留函数名，具体功能由派生类根据需要去定义</span></span><br></pre></td></tr></table></figure>
-<h2 id="顺序表-Sequential-List"><a href="#顺序表-Sequential-List" class="headerlink" title="顺序表 (Sequential List)"></a>顺序表 (Sequential List)</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
-<li>存储利用率高，除数据外不需要其他空间</li>
-<li>随机存取速度快<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3></li>
-<li>插入和删除时效率较低：平均需要移动一般元素</li>
-<li>表长动态变化较大时难以确定合适的存储空间  </li>
+          <h1>线性表</h1>
+<p>感觉以前看过，下了课慢慢补吧。</p>
+<h2 id="Vector">Vector</h2>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="type">int</span>&gt; vec;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="type">int</span>&gt; <span class="title function_">vec</span><span class="params">(<span class="number">5</span>)</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="type">int</span>&gt; <span class="title function_">vec</span><span class="params">(<span class="number">10</span>,<span class="number">1</span>)</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="type">int</span>&gt; <span class="title function_">vec</span><span class="params">(tmp)</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="type">int</span>&gt; <span class="title function_">temp</span><span class="params">(vec.begin(),vec.begin()+<span class="number">3</span>)</span></span><br></pre></td></tr></table></figure>
+<h3 id="迭代器-Iterators">迭代器(Iterators)</h3>
+<p>算法和容器的桥梁。<br>
+将迭代器作为算法的参数、通过迭代器来访问容器而不是把容器直接作为算法的参数。<br>
+将函数对象作为算法的参数而不是将函数所执行的运算作为算法的一部分。</p>
+<h2 id="线性表的抽象基类-LinearList-h">线性表的抽象基类 (LinearList.h)</h2>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">template &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span> <span class="comment">//应用模板类描述线性表抽象数据类型</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinearList</span> &#123;</span>                  </span><br><span class="line">public:</span><br><span class="line">    LinearList(); <span class="comment">//构造函数</span></span><br><span class="line">    ~LinearList(); <span class="comment">//析构函数</span></span><br><span class="line">    virtual <span class="type">int</span> <span class="title function_">Size</span><span class="params">()</span> <span class="type">const</span> = <span class="number">0</span>;                   <span class="comment">//求表最大容量</span></span><br><span class="line">    virtual <span class="type">int</span> <span class="title function_">Length</span><span class="params">()</span> <span class="type">const</span> = <span class="number">0</span>;                 <span class="comment">//求表长度</span></span><br><span class="line">    virtual <span class="type">int</span> <span class="title function_">Search</span><span class="params">(T&amp; x)</span> <span class="type">const</span> = <span class="number">0</span>;             <span class="comment">//在表中搜索给定值x</span></span><br><span class="line">    virtual <span class="type">int</span> <span class="title function_">Locate</span><span class="params">(<span class="type">int</span> i)</span> <span class="type">const</span> = <span class="number">0</span>;            <span class="comment">//定位第i个元素</span></span><br><span class="line">    virtual <span class="type">bool</span> <span class="title function_">getData</span><span class="params">(<span class="type">int</span> i, T&amp; x)</span> <span class="type">const</span> = <span class="number">0</span>;    <span class="comment">//取第i个表项的值</span></span><br><span class="line">    virtual <span class="type">void</span> <span class="title function_">setData</span><span class="params">(<span class="type">int</span> i, T&amp; x)</span>= <span class="number">0</span>;           <span class="comment">//修改第i个表项的值  </span></span><br><span class="line">    virtual <span class="type">bool</span> <span class="title function_">Insert</span><span class="params">(<span class="type">int</span> i, T&amp; x)</span> = <span class="number">0</span>;           <span class="comment">//在第i个表项后插入x</span></span><br><span class="line">    virtual <span class="type">bool</span> <span class="title function_">Remove</span><span class="params">(<span class="type">int</span> i, T&amp; x)</span> = <span class="number">0</span>;           <span class="comment">//删除第i个表项</span></span><br><span class="line">    virtual <span class="type">bool</span> <span class="title function_">IsEmpty</span><span class="params">()</span> <span class="type">const</span> = <span class="number">0</span>;               <span class="comment">//判表空 </span></span><br><span class="line">    virtual <span class="type">bool</span> <span class="title function_">IsFull</span><span class="params">()</span> <span class="type">const</span> = <span class="number">0</span>;                <span class="comment">//判表满</span></span><br><span class="line">    virtual <span class="type">void</span> <span class="title function_">Sort</span><span class="params">()</span> = <span class="number">0</span>;                        <span class="comment">//排序</span></span><br><span class="line">    virtual <span class="type">void</span> <span class="title function_">input</span><span class="params">()</span> = <span class="number">0</span>;                       <span class="comment">//输入</span></span><br><span class="line">    virtual <span class="type">void</span> <span class="title function_">output</span><span class="params">()</span> = <span class="number">0</span>;                      <span class="comment">//输出</span></span><br><span class="line">    virtual LinearList&lt;T&gt;&amp; operator= </span><br><span class="line">                (LinearList&lt;T&gt;&amp; L) = <span class="number">0</span>;             <span class="comment">//赋值</span></span><br><span class="line">&#125;;  <span class="comment">//在基类中预留函数名，具体功能由派生类根据需要去定义</span></span><br></pre></td></tr></table></figure>
+<h2 id="顺序表-Sequential-List">顺序表 (Sequential List)</h2>
+<h3 id="优点">优点</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>存储利用率高，除数据外不需要其他空间</p>
+</li>
+<li class="lvl-2">
+<p>随机存取速度快</p>
+</li>
 </ul>
-<h3 id="顺序表类的定义"><a href="#顺序表类的定义" class="headerlink" title="顺序表类的定义"></a>顺序表类的定义</h3><h2 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a>单链表</h2><h2 id="双链表"><a href="#双链表" class="headerlink" title="双链表"></a>双链表</h2><h2 id="STL容器-List"><a href="#STL容器-List" class="headerlink" title="STL容器 List"></a>STL容器 List</h2>
+<h3 id="缺点">缺点</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>插入和删除时效率较低：平均需要移动一般元素</p>
+</li>
+<li class="lvl-2">
+<p>表长动态变化较大时难以确定合适的存储空间</p>
+</li>
+</ul>
+<h3 id="顺序表类的定义">顺序表类的定义</h3>
+<h2 id="单链表">单链表</h2>
+<h2 id="双链表">双链表</h2>
+<h2 id="STL容器-List">STL容器 List</h2>
+
       
     </div>
 
@@ -518,8 +629,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h1><p>参考了<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/bit-operation.html">菜鸟教程</a><br>进一步用法可参考<a target="_blank" rel="noopener" href="https://leetcode.cn/circle/discuss/mDhWhf/">leetcode</a><br>上别的课摸鱼写的。也没什么内容。hexo的next主题markdown渲染有些问题，暂时不想管了。</p>
-<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><div class="table-container">
+          <h1>位运算</h1>
+<p>参考了<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/bit-operation.html">菜鸟教程</a><br>
+进一步用法可参考<a target="_blank" rel="noopener" href="https://leetcode.cn/circle/discuss/mDhWhf/">leetcode</a><br>
+上别的课摸鱼写的。也没什么内容。hexo的next主题markdown渲染有些问题，暂时不想管了。</p>
+<h2 id="基本语法">基本语法</h2>
 <table>
 <thead>
 <tr>
@@ -536,9 +650,8 @@
 </tr>
 <tr>
 <td>`<code></td>
-<td>&lt;/code&gt;`</td>
+<td></code>`</td>
 <td>或</td>
-<td>如果两个位至少有一个为1，则结果为1，否则为0</td>
 </tr>
 <tr>
 <td>^</td>
@@ -562,22 +675,42 @@
 </tr>
 </tbody>
 </table>
-</div>
-<h2 id="常见用法"><a href="#常见用法" class="headerlink" title="常见用法"></a>常见用法</h2><h3 id="按位与-amp"><a href="#按位与-amp" class="headerlink" title="按位与 &amp;"></a>按位与 &amp;</h3><ol>
-<li>清零  </li>
-<li>取二进制数的指定位  </li>
-<li>判断奇偶  <h3 id="按位或"><a href="#按位或" class="headerlink" title="按位或 |"></a>按位或 |</h3></li>
-<li>把某些位设置为1</li>
-</ol>
-<h3 id="异或-（不进位加法）"><a href="#异或-（不进位加法）" class="headerlink" title="异或 ^ （不进位加法）"></a>异或 ^ （不进位加法）</h3><ol>
-<li>翻转指定位</li>
-<li>交换两个数 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Swap</span><span class="params">(<span class="type">int</span> &amp;a, <span class="type">int</span> &amp;b)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a != b)&#123;</span><br><span class="line">        a ^= b;</span><br><span class="line">        b ^= a;</span><br><span class="line">        a ^= b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">a ^= b;：这一步将a和b进行异或操作，并将结果存储在a中。此时，a的值实际上是原始的a和b的异或结果。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">b ^= a;：这一步将新的a（即a和b的异或结果）和b进行异或操作，并将结果存储在b中。由于异或操作的性质（一个数与同一个数异或两次结果还是原数），这一步实际上将b的值变为了原始的a的值。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">a ^= b;：这一步将新的b（即原始的a的值）和新的a（即a和b的异或结果）进行异或操作，并将结果存储在a中。同样由于异或操作的性质，这一步将a的值变为了原始的b的值。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">~~~  </span><br><span class="line"><span class="number">3.</span> 只出现一次的数字（<span class="number">24.3</span><span class="number">.19</span>，leetcode <span class="number">136</span>）  </span><br><span class="line"></span><br><span class="line">给你一个 非空 整数数组 nums ，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</span><br><span class="line"></span><br><span class="line">你必须设计并实现线性时间复杂度的算法来解决此问题，且该算法只使用常量额外空间。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 取反 ~</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 使一个数的最低位为<span class="number">0</span></span><br><span class="line"></span><br><span class="line">~~~C</span><br><span class="line">a &amp; ~ <span class="number">1</span></span><br><span class="line"> ~ <span class="number">1</span>=<span class="number">1111</span> <span class="number">1111</span> <span class="number">1111</span> <span class="number">1110</span> </span><br></pre></td></tr></table></figure>
+<h2 id="常见用法">常见用法</h2>
+<h3 id="按位与">按位与 &amp;</h3>
+<ol>
+<li class="lvl-3">
+<p>清零</p>
+</li>
+<li class="lvl-3">
+<p>取二进制数的指定位</p>
+</li>
+<li class="lvl-3">
+<p>判断奇偶</p>
 </li>
 </ol>
+<h3 id="按位或">按位或 |</h3>
+<ol>
+<li class="lvl-3">
+<p>把某些位设置为1</p>
+</li>
+</ol>
+<h3 id="异或-（不进位加法）">异或 ^ （不进位加法）</h3>
+<ol>
+<li class="lvl-3">
+<p>翻转指定位</p>
+</li>
+<li class="lvl-3">
+<p>交换两个数</p>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Swap</span><span class="params">(<span class="type">int</span> &amp;a, <span class="type">int</span> &amp;b)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a != b)&#123;</span><br><span class="line">        a ^= b;</span><br><span class="line">        b ^= a;</span><br><span class="line">        a ^= b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">a ^= b;：这一步将a和b进行异或操作，并将结果存储在a中。此时，a的值实际上是原始的a和b的异或结果。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">b ^= a;：这一步将新的a（即a和b的异或结果）和b进行异或操作，并将结果存储在b中。由于异或操作的性质（一个数与同一个数异或两次结果还是原数），这一步实际上将b的值变为了原始的a的值。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">a ^= b;：这一步将新的b（即原始的a的值）和新的a（即a和b的异或结果）进行异或操作，并将结果存储在a中。同样由于异或操作的性质，这一步将a的值变为了原始的b的值。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">~~~  </span><br><span class="line"><span class="number">3.</span> 只出现一次的数字（<span class="number">24.3</span><span class="number">.19</span>，leetcode <span class="number">136</span>）  </span><br><span class="line"></span><br><span class="line">给你一个 非空 整数数组 nums ，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</span><br><span class="line"></span><br><span class="line">你必须设计并实现线性时间复杂度的算法来解决此问题，且该算法只使用常量额外空间。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 取反 ~</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 使一个数的最低位为<span class="number">0</span></span><br><span class="line"></span><br><span class="line">~~~C</span><br><span class="line">a &amp; ~ <span class="number">1</span></span><br><span class="line"> ~ <span class="number">1</span>=<span class="number">1111</span> <span class="number">1111</span> <span class="number">1111</span> <span class="number">1110</span> </span><br></pre></td></tr></table></figure>
 <p>如上</p>
-<h3 id="左移-lt-lt-与-右移-gt-gt-s"><a href="#左移-lt-lt-与-右移-gt-gt-s" class="headerlink" title="左移 &lt;&lt; 与 右移 &gt;&gt;s"></a>左移 &lt;&lt; 与 右移 &gt;&gt;s</h3><p>每左（右）移一位，相当于乘（除）2  </p>
-<h2 id="常见运算技巧"><a href="#常见运算技巧" class="headerlink" title="常见运算技巧"></a>常见运算技巧</h2><p>进一步用法可参考<a target="_blank" rel="noopener" href="https://leetcode.cn/circle/discuss/mDhWhf/">leetcode</a>  </p>
-<h3 id="取相反数"><a href="#取相反数" class="headerlink" title="取相反数"></a>取相反数</h3><p>-a = ~ a + 1</p>
+<h3 id="左移-与-右移-s">左移 &lt;&lt; 与 右移 &gt;&gt;s</h3>
+<p>每左（右）移一位，相当于乘（除）2</p>
+<h2 id="常见运算技巧">常见运算技巧</h2>
+<p>进一步用法可参考<a target="_blank" rel="noopener" href="https://leetcode.cn/circle/discuss/mDhWhf/">leetcode</a></p>
+<h3 id="取相反数">取相反数</h3>
+<p>-a = ~ a + 1</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  1024 = 0b00000000000000000000010000000000</span><br><span class="line"> -1024 = 0b11111111111111111111110000000000</span><br><span class="line"> ~1024 = 0b11111111111111111111101111111111</span><br><span class="line">~-1024 = 0b00000000000000000000001111111111</span><br></pre></td></tr></table></figure>
 
       
@@ -656,14 +789,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="第一讲-操作系统概论"><a href="#第一讲-操作系统概论" class="headerlink" title="第一讲 操作系统概论"></a>第一讲 操作系统概论</h1><p><h4>第一部分，该讲没什么价值，未必会补全</h4><br>由于不想花太多时间卷绩点/背书等，所以选了贵系这一门谌卫军老师开的，3学分，面向全校开的课，方便和老师助教交流，同时有时间的话参考thu的ucore 和 rcore 尝试自己写一个操作系统。<br><br/><br/><br>考核方式：40% 课后习题 + 30% coding + 25% 小测<br><br/><br/> </p>
+          <h1>第一讲 操作系统概论</h1>
+<h4>第一部分，该讲没什么价值，未必会补全</h4>
+由于不想花太多时间卷绩点/背书等，所以选了贵系这一门谌卫军老师开的，3学分，面向全校开的课，方便和老师助教交流，同时有时间的话参考thu的ucore 和 rcore 尝试自己写一个操作系统。  
+<br/><br/> 
+考核方式：40% 课后习题 + 30% coding + 25% 小测  
+<br/><br/> 
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一个引入题</span></span><br><span class="line">BOOL  g_bEndFlag = TRUE;</span><br><span class="line">semId   g_synSemId;<span class="comment">//信号量</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 优先级低，70 */</span></span><br><span class="line"><span class="type">void</span>  <span class="title function_">testTaskA</span><span class="params">( )</span>     </span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span>(g_bEndFlag)</span><br><span class="line">    &#123;        <span class="comment">/* 等待信号量 */</span></span><br><span class="line">        semTake(g_synSemId);</span><br><span class="line">        g_bEndFlag = FALSE;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*优先级高，50*/</span></span><br><span class="line"><span class="type">void</span>  <span class="title function_">testTaskB</span><span class="params">( )</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span>  nRecvLen;</span><br><span class="line">    <span class="keyword">while</span>(g_bEndFlag) &#123;</span><br><span class="line">        nRecvLen = recv(sockId....);</span><br><span class="line">        <span class="keyword">if</span>(nRecvLen &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">/* 打印结束信息 */</span>           </span><br><span class="line">            <span class="built_in">printf</span>(Finished!”);            </span><br><span class="line">            <span class="comment">/* 释放信号量 */</span>           </span><br><span class="line">            semGive(g_synSemId);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>某次运行程序后，不断打印 “Finished” ，为什么？<br><br /><br>I/O设备出现故障，异常情况下不阻塞了，这样<code>recv(sockId)始终小于等于0</code>，testTaskB不断循环，cpu无法跑testTaskA</p>
+<p>某次运行程序后，不断打印 “Finished” ，为什么？<br>
+<br /><br>
+I/O设备出现故障，异常情况下不阻塞了，这样<code>recv(sockId)始终小于等于0</code>，testTaskB不断循环，cpu无法跑testTaskA</p>
 <p>解决办法：testTaskB()后，OSDelay(100)，cpu能够有空闲运行testTaskA</p>
-<h4 id="进程优先级是什么？"><a href="#进程优先级是什么？" class="headerlink" title="进程优先级是什么？"></a><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/460053767">进程优先级是什么？</a></h4><h2 id="1-1-计算机概述"><a href="#1-1-计算机概述" class="headerlink" title="1.1 计算机概述"></a>1.1 计算机概述</h2><h4 id="计算机包含什么-硬件设备-？"><a href="#计算机包含什么-硬件设备-？" class="headerlink" title="计算机包含什么 硬件设备 ？"></a>计算机包含什么 <strong><em>硬件设备</em></strong> ？</h4><p><br /></p>
-<p>BUS &nbsp;&nbsp;CPU<br>|  &nbsp;&nbsp;Memory<br>|  &nbsp;&nbsp;Video Controller<br>|  &nbsp;&nbsp;Keyboard Controller<br>|  &nbsp;&nbsp;USB Controller<br>V  &nbsp;&nbsp;Hard Disk Controller  </p>
-<p><img src="./img/os1.png" width="500" height="350" /></p>
-<h4 id="计算机指令"><a href="#计算机指令" class="headerlink" title="计算机指令"></a>计算机指令</h4><div class="table-container">
+<h4 id="进程优先级是什么？"><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/460053767">进程优先级是什么？</a></h4>
+<h2 id="1-1-计算机概述">1.1 计算机概述</h2>
+<h4 id="计算机包含什么-硬件设备-？">计算机包含什么 <em><strong>硬件设备</strong></em> ？</h4>
+<br />
+<p>BUS   CPU<br>
+|    Memory<br>
+|    Video Controller<br>
+|    Keyboard Controller<br>
+|    USB Controller<br>
+V    Hard Disk Controller</p>
+<img src="./img/os1.png" width="500" height="350" />
+<h4 id="计算机指令">计算机指令</h4>
 <table>
 <thead>
 <tr>
@@ -682,85 +830,158 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>操作码 操作数</p>
-<h2 id="1-2-操作系统的概念"><a href="#1-2-操作系统的概念" class="headerlink" title="1.2 操作系统的概念"></a>1.2 操作系统的概念</h2><p>如果直接对硬件编程？<br>键盘如何工作？如何把键盘缓冲中的数据拷贝到内存，显示器如何工作…?<br>管理  </p>
-<p>管理系统的各个部件，使之能正常运转<br>提供软件接口等。</p>
-<h2 id="1-3-历史-略"><a href="#1-3-历史-略" class="headerlink" title="1.3 历史 略"></a>1.3 历史 略</h2><h2 id="1-4-操作系统的类型"><a href="#1-4-操作系统的类型" class="headerlink" title="1.4 操作系统的类型"></a>1.4 操作系统的类型</h2><p>也略过吧。</p>
-<h3 id="实时操作系统"><a href="#实时操作系统" class="headerlink" title="实时操作系统"></a>实时操作系统</h3><h3 id="嵌入式操作系统"><a href="#嵌入式操作系统" class="headerlink" title="嵌入式操作系统"></a>嵌入式操作系统</h3><h3 id="分布式操作系统"><a href="#分布式操作系统" class="headerlink" title="分布式操作系统"></a>分布式操作系统</h3><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>批处理操作系统、分时操作系统、个人计算机操作系统等</p>
-<h2 id="1-5-操作系统需要的硬件特性-（比较重要）"><a href="#1-5-操作系统需要的硬件特性-（比较重要）" class="headerlink" title="1.5 操作系统需要的硬件特性 （比较重要）"></a>1.5 操作系统需要的硬件特性 （比较重要）</h2><ul>
-<li>受保护的指令</li>
-<li>系统调用</li>
-<li>内存保护</li>
-<li>中断机制</li>
-<li>I/O设备</li>
-<li>时钟操作</li>
+<h2 id="1-2-操作系统的概念">1.2 操作系统的概念</h2>
+<p>如果直接对硬件编程？键盘如何工作？如何把键盘缓冲中的数据拷贝到内存，显示器如何工作…?<br>
+管理</p>
+<p>管理系统的各个部件，使之能正常运转<br>
+提供软件接口等。</p>
+<h2 id="1-3-历史-略">1.3 历史 略</h2>
+<h2 id="1-4-操作系统的类型">1.4 操作系统的类型</h2>
+<p>也略过吧。</p>
+<h3 id="实时操作系统">实时操作系统</h3>
+<h3 id="嵌入式操作系统">嵌入式操作系统</h3>
+<h3 id="分布式操作系统">分布式操作系统</h3>
+<h3 id="其他">其他</h3>
+<p>批处理操作系统、分时操作系统、个人计算机操作系统等</p>
+<h2 id="1-5-操作系统需要的硬件特性-（比较重要）">1.5 操作系统需要的硬件特性 （比较重要）</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>受保护的指令</p>
+</li>
+<li class="lvl-2">
+<p>系统调用</p>
+</li>
+<li class="lvl-2">
+<p>内存保护</p>
+</li>
+<li class="lvl-2">
+<p>中断机制</p>
+</li>
+<li class="lvl-2">
+<p>I/O设备</p>
+</li>
+<li class="lvl-2">
+<p>时钟操作</p>
+</li>
 </ul>
-<h3 id="受保护的指令-（-特权指令-）"><a href="#受保护的指令-（-特权指令-）" class="headerlink" title="受保护的指令 （ 特权指令 ）"></a>受保护的指令 （ 特权指令 ）</h3><p>有些指令只有操作系统才有权访问,例如：</p>
-<ul>
-<li>对某些硬件资源的直接访问指令，如对 I/O设备的直接访问指令，如磁盘、打印机等；</li>
-<li>对内存管理状态进行操作的指令，如内存地址映射、刷新TLB等  </li>
-<li>某些特殊的状态位的设置指令</li>
-<li>停机指令。</li>
+<h3 id="受保护的指令-（-特权指令-）">受保护的指令 （ 特权指令 ）</h3>
+<p>有些指令只有操作系统才有权访问,例如：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>对某些硬件资源的直接访问指令，如对 I/O设备的直接访问指令，如磁盘、打印机等；</p>
+</li>
+<li class="lvl-2">
+<p>对内存管理状态进行操作的指令，如内存地址映射、刷新TLB等</p>
+</li>
+<li class="lvl-2">
+<p>某些特殊的状态位的设置指令</p>
+</li>
+<li class="lvl-2">
+<p>停机指令。</p>
+</li>
 </ul>
-<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1432783">什么是TLB?</a> </p>
-<h4 id="如何从硬件上实现这个要求？"><a href="#如何从硬件上实现这个要求？" class="headerlink" title="如何从硬件上实现这个要求？"></a>如何从硬件上实现这个要求？</h4><p><strong>处理器的状态</strong>  </p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1432783">什么是TLB?</a></p>
+<h4 id="如何从硬件上实现这个要求？">如何从硬件上实现这个要求？</h4>
+<p><strong>处理器的状态</strong></p>
 <p>根据运行程序对资源和机器指令的使用权限，把处理器设置为不同状态。</p>
 <p>多数系统将处理器工作状态划分为管态和目态。</p>
 <p><strong>管态</strong> ：操作系统的管理程序运行时的状态，较高的特权级别，又称为特权态、系统态、内核态</p>
-<p>处理器处于管态时：可以执行所有的指令（包括特权指令）、使用所有的资源，并具有改变处理器状态的能力。  </p>
+<p>处理器处于管态时：可以执行所有的指令（包括特权指令）、使用所有的资源，并具有改变处理器状态的能力。</p>
 <p><strong>目态</strong>： 用户程序运行时的状态，较低的特权级别，又称为普通态（普态）、用户态。</p>
-<p>在此状态下禁止使用特权指令，不能直接使用系统资源与改变CPU状态，并且只能访问用户程序所在的存储空间。<br>有些系统将处理器状态划分核心状态，管理状态和用户程序状态（目标状态）三种。  </p>
+<p>在此状态下禁止使用特权指令，不能直接使用系统资源与改变CPU状态，并且只能访问用户程序所在的存储空间。有些系统将处理器状态划分核心状态，管理状态和用户程序状态（目标状态）三种。</p>
 <p>在磁盘、内存、寄存器、网络、CD-ROM中，CPU能直接访问的只有：</p>
 <p>内存和寄存器。</p>
-<h4 id="以-x86系列处理器为例"><a href="#以-x86系列处理器为例" class="headerlink" title="以 x86系列处理器为例"></a>以 x86系列处理器为例</h4><p>x86处理器支持4个处理器特权级别：$R_0,R_1,R_2,R_3$ , 特权能力一次下降。$R_0$相当于双状态系统的内核态，$R_3$相当于用户态。 </p>
-<p>各个级别有保护性检查（地址校验、I/O限制）  </p>
-<p>特权级别之间的转换方式不尽相同  </p>
+<h4 id="以-x86系列处理器为例">以 x86系列处理器为例</h4>
+<p>x86处理器支持4个处理器特权级别：$R_0,R_1,R_2,R_3$ , 特权能力一次下降。$R_0$相当于双状态系统的内核态，$R_3$相当于用户态。</p>
+<p>各个级别有保护性检查（地址校验、I/O限制）</p>
+<p>特权级别之间的转换方式不尽相同</p>
 <p>四个级别运行不同类别的程序：</p>
-<ul>
-<li>R0-运行操作系统核心代码</li>
-<li>R1-运行关键设备驱动程序和I/O处理例程</li>
-<li>R2-运行其它受保护共享代码，如语言系统运行环境</li>
-<li>R3-运行各种用户程序</li>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>R0-运行操作系统核心代码</p>
+</li>
+<li class="lvl-2">
+<p>R1-运行关键设备驱动程序和I/O处理例程</p>
+</li>
+<li class="lvl-2">
+<p>R2-运行其它受保护共享代码，如语言系统运行环境</p>
+</li>
+<li class="lvl-2">
+<p>R3-运行各种用户程序</p>
+</li>
 </ul>
-<p>现有基于x86处理器的操作系统，多数UNIX、Linux以及Windows系列大都只用了R0和R3两个特权级别。  </p>
-<h4 id="CPU如何判断当前运行的程序是系统程序还是用户程序"><a href="#CPU如何判断当前运行的程序是系统程序还是用户程序" class="headerlink" title="CPU如何判断当前运行的程序是系统程序还是用户程序"></a>CPU如何判断当前运行的程序是系统程序还是用户程序</h4><p><strong>程序状态字 PSW（Program Status Word）</strong></p>
-<p>一个专门的寄存器，用来指示处理器的状态。<br>通常包括： </p>
-<ul>
-<li>CPU的工作状态码——指明内核态还是用户态，说明当前在CPU上执行的是操作系统还是一般用户，从而决定其是否可以使用特权指令或拥有其它的特殊权力。</li>
-<li>条件码 —— 反应指令执行后的结果特征</li>
-<li>中断屏蔽码 —— 指出是否允许中断 </li>
+<p>现有基于x86处理器的操作系统，多数UNIX、Linux以及Windows系列大都只用了R0和R3两个特权级别。</p>
+<h4 id="CPU如何判断当前运行的程序是系统程序还是用户程序">CPU如何判断当前运行的程序是系统程序还是用户程序</h4>
+<p><strong>程序状态字 PSW（Program Status Word）</strong></p>
+<p>一个专门的寄存器，用来指示处理器的状态。<br>
+通常包括：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>CPU的工作状态码——指明内核态还是用户态，说明当前在CPU上执行的是操作系统还是一般用户，从而决定其是否可以使用特权指令或拥有其它的特殊权力。</p>
+</li>
+<li class="lvl-2">
+<p>条件码 —— 反应指令执行后的结果特征</p>
+</li>
+<li class="lvl-2">
+<p>中断屏蔽码 —— 指出是否允许中断</p>
+</li>
 </ul>
-<h4 id="状态之间如何转换？"><a href="#状态之间如何转换？" class="headerlink" title="状态之间如何转换？"></a>状态之间如何转换？</h4><p><img src="./img/os2.png" width="500" height="350" /></p>
+<h4 id="状态之间如何转换？">状态之间如何转换？</h4>
+<img src="./img/os2.png" width="500" height="350" />
 <p>因此，为了解决用户去做一些带有特权的指令（比如I/O）时：</p>
-<h3 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h3><p><code>system call</code></p>
+<h3 id="系统调用">系统调用</h3>
+<p><code>system call</code></p>
 <p>用户程序通过特殊的访管指令，来请求操作系统为其提供某种功能的服务。系统调用指令的实现过程一般是：</p>
-<ul>
-<li>当CPU执行访管指令时，即引起访管中断；</li>
-<li>处理器保存中断点的程序执行上下文环境（PSW,PC和其他的一些寄存器），CPU切换到内核态。</li>
-<li>中断处理程序开始工作，调用相应的系统服务。</li>
-<li>中断处理结束后，恢复被中断程序的上下文环境，CPU恢复为用户态，回到中断点继续执行</li>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>当CPU执行访管指令时，即引起访管中断；</p>
+</li>
+<li class="lvl-2">
+<p>处理器保存中断点的程序执行上下文环境（PSW,PC和其他的一些寄存器），CPU切换到内核态。</p>
+</li>
+<li class="lvl-2">
+<p>中断处理程序开始工作，调用相应的系统服务。</p>
+</li>
+<li class="lvl-2">
+<p>中断处理结束后，恢复被中断程序的上下文环境，CPU恢复为用户态，回到中断点继续执行</p>
+</li>
 </ul>
-<p><img src="./img/os3.png" width="500" height="350" /></p>
-<p><img src="./img/os4.png" width="500" height="350" /></p>
-<p>C语言中也可以写如上图中的汇编代码。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 源文件test_c_asm.c </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span> </span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">asm</span>( </span><br><span class="line">    <span class="string">&quot;.text\n&quot;</span> </span><br><span class="line">    <span class="string">&quot;.global Add\n&quot;</span> </span><br><span class="line">    <span class="string">&quot;.type Add, %function\n&quot;</span> </span><br><span class="line">    <span class="string">&quot;Add:\n&quot;</span> </span><br><span class="line">    <span class="string">&quot;add w0, w0, w1\n&quot;</span> </span><br><span class="line">    <span class="string">&quot;ret&quot;</span> </span><br><span class="line">); </span><br><span class="line"> </span><br><span class="line"><span class="keyword">extern</span> <span class="type">int</span> <span class="title function_">Add</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span>; </span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>** argv)</span> </span><br><span class="line">&#123; </span><br><span class="line">    <span class="type">int</span> b=<span class="number">1</span>,c=<span class="number">2</span>; </span><br><span class="line">    <span class="type">int</span> a = Add(b,c); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;res =  %d\n&quot;</span>, a); </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure><br>更详细一点的情况，可以参见 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/455686605">C语言&amp;汇编混合编程</a></p>
+<img src="./img/os3.png" width="500" height="350" />
+<img src="./img/os4.png" width="500" height="350" />
+<p>C语言中也可以写如上图中的汇编代码。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 源文件test_c_asm.c </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span> </span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">asm</span>( </span><br><span class="line">    <span class="string">&quot;.text\n&quot;</span> </span><br><span class="line">    <span class="string">&quot;.global Add\n&quot;</span> </span><br><span class="line">    <span class="string">&quot;.type Add, %function\n&quot;</span> </span><br><span class="line">    <span class="string">&quot;Add:\n&quot;</span> </span><br><span class="line">    <span class="string">&quot;add w0, w0, w1\n&quot;</span> </span><br><span class="line">    <span class="string">&quot;ret&quot;</span> </span><br><span class="line">); </span><br><span class="line"> </span><br><span class="line"><span class="keyword">extern</span> <span class="type">int</span> <span class="title function_">Add</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span>; </span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>** argv)</span> </span><br><span class="line">&#123; </span><br><span class="line">    <span class="type">int</span> b=<span class="number">1</span>,c=<span class="number">2</span>; </span><br><span class="line">    <span class="type">int</span> a = Add(b,c); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;res =  %d\n&quot;</span>, a); </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+<p>更详细一点的情况，可以参见 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/455686605">C语言&amp;汇编混合编程</a></p>
 <p>但是，系统调用和函数调用比起来，虽然保护了系统，更安全，但是：</p>
-<ul>
-<li>跨越了硬件栅栏，开销更大（无系统函数的地址、Cache和TLB项更新等），一次系统调用所花费的时间是一次函数调用的10－1000倍</li>
-<li>解决方案：把一些系统功能放在用户态下运行，如动态库（DLL）</li>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>跨越了硬件栅栏，开销更大（无系统函数的地址、Cache和TLB项更新等），一次系统调用所花费的时间是一次函数调用的10－1000倍</p>
+</li>
+<li class="lvl-2">
+<p>解决方案：把一些系统功能放在用户态下运行，如动态库（DLL）</p>
+</li>
 </ul>
-<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/troubleshoot/windows-client/setup-upgrade-and-drivers/dynamic-link-library">什么是dll</a>  </p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/troubleshoot/windows-client/setup-upgrade-and-drivers/dynamic-link-library">什么是dll</a></p>
 <p>而对于 <em>函数调用</em> ：</p>
-<p><img src="./img/os5.png" width="500" height="300" /></p>
-<ul>
-<li>栈中保存的信息<br>返回地址、调用函数的寄存器值  </li>
+<img src="./img/os5.png" width="500" height="300" />
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>栈中保存的信息<br>
+返回地址、调用函数的寄存器值</p>
+</li>
 </ul>
-<h3 id="内存保护"><a href="#内存保护" class="headerlink" title="内存保护"></a>内存保护</h3><ol>
-<li>防止一个用户程序去访问其他用户程序的数据。</li>
-<li>保护操作系统免受用户程序的破坏。 </li>
+<h3 id="内存保护">内存保护</h3>
+<ol>
+<li class="lvl-3">
+<p>防止一个用户程序去访问其他用户程序的数据。</p>
+</li>
+<li class="lvl-3">
+<p>保护操作系统免受用户程序的破坏。</p>
+</li>
 </ol>
-<p>留待存储管理时展开。 </p>
-<h3 id="中断机制"><a href="#中断机制" class="headerlink" title="中断机制"></a>中断机制</h3><p>留待I/O管理时展开。</p>
+<p>留待存储管理时展开。</p>
+<h3 id="中断机制">中断机制</h3>
+<p>留待I/O管理时展开。</p>
 
       
     </div>
@@ -834,11 +1055,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="我为什么建立这个博客"><a href="#我为什么建立这个博客" class="headerlink" title="我为什么建立这个博客"></a>我为什么建立这个博客</h2><h4 id="Why-I-decide-to-establish-this-blog"><a href="#Why-I-decide-to-establish-this-blog" class="headerlink" title="Why I decide to establish this blog"></a>Why I decide to establish this blog</h4><p>&nbsp;从小就一直喜欢研究各种没碰过的东西，可惜由于个人的懒惰和客观条件的不允许，没能做成任何所谓 <code>有意义</code> 的东西。同时在大学的专业不是很让人感兴趣，也不想去用我这个笨脑子浪费时间去做科研，在大学的大多数时间也找不到有共同话题的朋友，我总喜欢记录这个事情本身，还有一些杂七杂八的事情，等到以后有机会再详述。  </p>
-<p>&nbsp;总的来说，我希望这个博客主要能够记录下来我学习过的东西，方便以后查找和补全我的技术栈，同时也显得大学生活不是那么空虚，其次用一个小入口记录下我不想发朋友圈的奇怪的想法。<br>&nbsp;最后声明，所 <code>学习</code> 的内容大多数是基于 <strong><em>好奇和爱好</em></strong> ，未必有深度和价值。会慢慢往里面填基础知识，或者记录一下自己尝试实践的过程，但是我自己写了不一定及时更新到Github Page上。<br>当然，也欢迎和我交流你的想法。</p>
+          <h2 id="我为什么建立这个博客">我为什么建立这个博客</h2>
+<h4 id="Why-I-decide-to-establish-this-blog">Why I decide to establish this blog</h4>
+<p> 从小就一直喜欢研究各种没碰过的东西，可惜由于个人的懒惰和客观条件的不允许，没能做成任何所谓 <code>有意义</code> 的东西。同时在大学的专业不是很让人感兴趣，也不想去用我这个笨脑子浪费时间去做科研，在大学的大多数时间也找不到有共同话题的朋友，我总喜欢记录这个事情本身，还有一些杂七杂八的事情，等到以后有机会再详述。</p>
+<p> 总的来说，我希望这个博客主要能够记录下来我学习过的东西，方便以后查找和补全我的技术栈，同时也显得大学生活不是那么空虚，其次用一个小入口记录下我不想发朋友圈的奇怪的想法。<br>
+ 最后声明，所 <code>学习</code> 的内容大多数是基于 <em><strong>好奇和爱好</strong></em> ，未必有深度和价值。会慢慢往里面填基础知识，或者记录一下自己尝试实践的过程，但是我自己写了不一定及时更新到Github Page上。<br>
+当然，也欢迎和我交流你的想法。</p>
 <h5>主题也不一定会花时间优化，暂时以记录为主。</h5>
-
-
 
       
     </div>
@@ -922,7 +1145,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/project/archives">
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
