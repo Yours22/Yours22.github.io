@@ -183,7 +183,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-04-16 10:13:38 / Modified: 12:14:06" itemprop="dateCreated datePublished" datetime="2024-04-16T10:13:38+08:00">2024-04-16</time>
+              <time title="Created: 2024-04-16 10:13:38 / Modified: 12:14:33" itemprop="dateCreated datePublished" datetime="2024-04-16T10:13:38+08:00">2024-04-16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1206,7 +1206,7 @@ MediaPipe是一款由Google开发并开源的数据流处理机器学习应用�
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-04-09 23:32:00" itemprop="dateModified" datetime="2024-04-09T23:32:00+08:00">2024-04-09</time>
+                <time title="Modified: 2024-04-16 15:57:45" itemprop="dateModified" datetime="2024-04-16T15:57:45+08:00">2024-04-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1245,9 +1245,9 @@ Ubuntu 22.04</p>
 暂时打算重装，换成20.04。</p>
 <p>24.4.9更新：<br>
 jetpack 5.1.3，其中<br>
-cuda11.4,<br>
-安装torch1.14.0a0+44dac51c.nv23.02<br>
-注意要用python3.8<br>
+cuda11.4。安装torch1.14.0a0+44dac51c.nv23.02<br>
+注意要用python3.8。选用TensoRT 8.2 GA Update 4 for Ubuntu 20.04 and CUDA 11.4 TAR package<br>
+注意是 TensorRT 8.2 GA Update 4 for ARM SBSA<br>
 torchvision版本官方文档尚未更新。选取0.14测试，暂时未出现问题。</p>
 <h3 id="测试">测试</h3>
 <p>测试torch能否正确调用cuda</p>
@@ -1286,6 +1286,7 @@ pip3 install -r requirements.txt
 <p>测试成功,但是发现帧率较低，只有20-30帧左右。</p>
 <p>疑似是缓存速度限制了计算速度。经检查GPU和CPU占用率都比较低。</p>
 <h2 id="tensorRT-测试？">tensorRT 测试？</h2>
+<p>在重装系统后,在官网上找到对应版本下载并解压</p>
 <h2 id="mediapipe">mediapipe</h2>
 <h2 id="3D-Gaussian-Splatting">3D Gaussian Splatting</h2>
 <p>待测试。</p>
